@@ -15,6 +15,8 @@ export default function ResetPassword(){
               <label>Comform Password</label>
               <input type="password" className="form-control" placeholder="Comform Password" />
           </div>
+          <Link to='/'>
+          </Link>
           <div className="d-grid">
               <button type="submit" className="btn btn-primary">Reset Password</button>
           </div>

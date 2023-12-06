@@ -1,4 +1,4 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     body {
       background-color: rgb(255, 255, 255);
       .guest-background{
@@ -22,5 +22,45 @@
     div .guest-layout{
         flex-direction: column !important;
     }
-
+    aside{
+        display: none;
+    }
+    div .default-content {
+        min-width:100%;
+    }
+    div .button-row a{
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    div .card{
+        height: 20vh;
+    }
+    div .user-profile{
+        flex-direction: column;
+        background-color:transparent;
+        align-items: center;
+        height: 50vh;
+    }
+    div .profile-logo{
+        width: 90%;
+    }
+    div .profile-logo img{
+        height: 26vh;
+        margin: 1vh;
+    }
+    div .user-info{
+        width: 90%;
+    }
+    div .user-data{
+        font-size: 1rem;
+    }
+    div .btns-for-profile a{
+        text-align: center;
+        font-size: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        margin-bottom: 2rem;
+        height: 10vh;
+    }
   }

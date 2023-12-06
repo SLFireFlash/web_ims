@@ -191,6 +191,7 @@ div .main-buttons a{
 div .main-buttons a:hover{
     scale: 1.02;
     background-color: #22e785;
+    color: #2E344C;
 }
 div .other-buttons{
     display: flex;
@@ -214,6 +215,7 @@ div .other-buttons a{
 .acconut-cls:hover{
     scale: 1.02;
     background-color: #adec38;
+    color: #2E344C;
 }
 .logout-cls:hover{
     scale: 1.02;
@@ -289,7 +291,7 @@ div .card-content{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70%;
+    height: 15vh;
     text-align: center;
     font-size: 3rem;
     background-color: bisque;
@@ -300,14 +302,14 @@ div .card-title{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70%;
+    height: 10vh;
     text-align: center;
-    font-size: 2rem;
     font-weight: 600;
     background-color: #76779c;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: white;
+    margin-bottom: 0;
 }
 /*dashboard buttons*/
 div .button-row{
@@ -348,4 +350,104 @@ div .dashboard-loading{
     min-height: 90vh;
     justify-content: center;
     align-items: center;
+}
+
+/*product page */
+
+div .product-table{
+    width: 100%;
+}
+
+/* account page */
+
+div .user-profile{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 48vh;
+    background-color: #D9D9D9;
+    margin-top: .2rem;
+}
+div .profile-logo{
+    height: 45vh;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccb4b4;
+    box-shadow: 5px 5px 15px #9c8c8c;
+    border-radius: .5rem;
+}
+div .user-info{
+    height: 45vh;
+    width: 55%;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccb4b4;
+    box-shadow: 5px 5px 15px #9c8c8c;
+    border-radius: .5rem;
+    flex-direction: column;
+}
+div .user-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    width: 70%;
+    background-color: #446285;
+    box-shadow: 5px 5px 15px #9c8c8c;
+    border-radius: .5rem;
+    color: white;
+    margin-top: 1vh;
+
+}
+div .user-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    height: 25vh;
+    width: 70%;
+    background-color: #2E344C;
+    color: white;
+    background-color: #446285;
+    box-shadow: 5px 5px 15px #9c8c8c;
+    border-radius: .5rem;
+    color: white;
+
+}
+div .user-data p{
+    margin-left: 1rem;
+
+}
+div .btns-for-profile{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 42vh;
+    justify-content: space-between;
+    
+    
+}
+div .btns-for-profile a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 15vh;
+    border-radius: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: aqua;
+    background-color: #5459e7;
+    box-shadow: 5px 5px 15px #e74c4c;
+    transition: ease .5s;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+div .btns-for-profile a:hover{
+    scale: 1.05;
 }

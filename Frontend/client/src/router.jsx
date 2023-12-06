@@ -20,6 +20,7 @@ import LoginNew from "./pages/LoginNew";
 import PwResetReqest from "./pages/PwResetReqest";
 import ResetPassword from "./pages/ResetPassword";
 import PwResetCheck from "./pages/PwResetCheck";
+import DashboardNew from "./pages/DashboardNew";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
             {
                 path:'/logout',
                 element:<Logout />
+            },
+            {
+                path:'/dashboard_new',
+                element:<DashboardNew />
             }
         ]
     },

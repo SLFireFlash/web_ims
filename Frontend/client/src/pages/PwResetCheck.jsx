@@ -8,7 +8,7 @@ export default function PwResetCheck(){
             <h1>Password Reset</h1>
             <div className="mb-3">
                 <label>Email address</label>
-                <input type="email" onChange={ev=>setResetToken(ev.target.value)} className="form-control" placeholder="Enter email"/>
+                <input type="text" onChange={ev=>setResetToken(ev.target.value)} className="form-control" placeholder="Enter Token"/>
             </div>
             <Link to='/reset_password'>
                 <div className="d-grid">
