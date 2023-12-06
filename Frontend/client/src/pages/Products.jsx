@@ -3,7 +3,7 @@
 export default function Products(){
 
     return(
-        <h2>Product Page</h2>
+        <h1>product page</h1>
 
     );
 }

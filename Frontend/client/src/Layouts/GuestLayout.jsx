@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
+import hero from '../assets/hero.png';
 
 
 export default function GuestLayout(){
@@ -14,14 +15,24 @@ export default function GuestLayout(){
     else{
         return(
             <>
-                <div className="guest-layout">
-                <h1>welcome Friend</h1>
-                <Outlet />
+            <div className="guest-layout">
+                <div className="hero-side">
+                    <img src={hero} alt="hero" />
+                </div>
+                <div className="outlet-side">
+                    <Outlet />
+                </div>
+
             </div>
             </>
 
         )
     }
-
+        // <div className="hero-img container">
+        //     <img src={hero} alt="hero" />
+        // </div>
+        // <div className="signup-page">
+        //     <Outlet />
+        // </div>
 
 }

@@ -35,7 +35,8 @@ export default function Login(){
             </div>
             <div className="new-user">
                 <h3>Dont have an account?</h3>
-                <Link to="/register">Register</Link>
+                {/* <Link to="/register">Register</Link> */}
+                <Link to="/registernew">Register</Link>
             </div>
 
 

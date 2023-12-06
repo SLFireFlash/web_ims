@@ -10,14 +10,14 @@ export default function DefaultLayout(){
     }
     if(!token){
         return(
-            <Navigate to="/login" />
+            <Navigate to="/login_new" />
         )     
     }else{
 
         return(
         
             <>
-            <div className="defult-layout">
+            <div className="defult-layout ">
 
                 <aside>
                     <div className="main-buttons">
