@@ -8,9 +8,14 @@ import NotFound from "./pages/Notfound";
 import DefaultLayout from "./Layouts/DefaultLayout";
 import GuestLayout from "./Layouts/GuestLayout";
 import LoginHelp from "./pages/LoginHelp";
+import Account from './pages/Account';
+import Customers from './pages/Customers'
+import Invoice from './pages/Invoice'
+import Logout from './pages/Logout'
+import Products from './pages/Products'
+import Suplyer from './pages/Suplyer'
 
 const router = createBrowserRouter([
-
     {
         path: '/',
         element: <DefaultLayout />,
@@ -23,6 +28,32 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <Dashboard />
             },
+            {
+                path: 'account',
+                element: <Account />
+            },
+            {
+                path:'customers',
+                element: <Customers />
+            },
+            {
+                path:'invoice',
+                element: <Invoice />
+            },
+            {
+                path: '/products',
+                element:<Products />
+            },
+            {
+                path: 'suplyers',
+                element: <Suplyer />
+            },
+            {
+                path:'/logout',
+                element:<Logout />
+            }
+
+
         ]
     },
     {
