@@ -28,10 +28,36 @@
     div .default-content {
         min-width:100%;
     }
-    div .button-row a{
-        text-align: center;
-        font-size: 1.5rem;
+    div .button-row{
+        display: none;
     }
+    div .button-row-mobi{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 2rem;
+    }
+    div .button-row-mobi a{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 15vh;
+        background-color:white ;
+        border-radius: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: aqua;
+        background-color: #5459e7;
+        box-shadow: 5px 5px 15px #e74c4c;
+        transition: ease .5s;
+    }
+
+
+
     div .card{
         height: 20vh;
     }
@@ -63,4 +89,41 @@
         margin-bottom: 2rem;
         height: 10vh;
     }
+    div .not-found a{
+        margin-top: 5vh;
+        font-size: 1rem;
+        width: 50%;
+        height: 10vh;
+        text-align: center;
+    }
+    div .Search-product input::placeholder{
+        color: white;
+        font-size:small;
+        text-align: center;
+    }
+    div .Search-product{
+        height: fit-content;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;   
+    }
+    div .search-info{
+        display:flex;
+        flex-direction: row;
+        max-width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    div .search-info input{
+        display:flex;
+        flex-direction: row;
+        max-width: 28%;
+    }
+    div .search-btn{
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+    }
+    
   }

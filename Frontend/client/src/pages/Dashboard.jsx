@@ -17,7 +17,7 @@ export default function Dashboard(){
 
                 </div>
 
-                <div className="dashboard-buttons ">
+                <div className="dashboard-buttons">
                     <div className="button-row">
                         <Link to={'/new_bill'} > Create New Bill </Link>
                         <Link to={'/add_product'} >Add New Product</Link>
@@ -27,6 +27,16 @@ export default function Dashboard(){
                         <Link to={''} >Update Products</Link>
                         <Link to={''} >Remove Product</Link>
                         <Link to={'/account'} >Account Info</Link>
+                    </div>
+                    <div className="button-row-mobi">
+                        <Link to={'/products'} >View All products</Link>
+                        <Link to={'/invoice'} >Make New Bill</Link>
+                        <Link to={'/update'}>Update Products</Link>
+                    </div>
+                    <div className="button-row-mobi">
+                        <Link to={'/suplyers'} >Suplyers</Link>
+                        <Link to={'/customers'} >Customers</Link>
+                        <Link to={'/account'} >Account</Link>
                     </div>
                 </div>
             </div>

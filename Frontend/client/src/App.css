@@ -312,6 +312,9 @@ div .card-title{
     margin-bottom: 0;
 }
 /*dashboard buttons*/
+div .button-row-mobi{
+    display: none;
+}
 div .button-row{
     display:flex;
     flex-direction: row;
@@ -323,6 +326,7 @@ div .button-row{
 
 div .button-row a{
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
     width: 30%;
@@ -447,7 +451,101 @@ div .btns-for-profile a{
     margin-left: 2rem;
     margin-right: 2rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 div .btns-for-profile a:hover{
     scale: 1.05;
 }
+div .not-found{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5C6468;
+}
+div .not-found h1{
+    font-size:12rem;
+    color: #eb4343;
+}
+div .not-found h3{
+    font-size:2rem;
+    color: whitesmoke;
+}
+div .not-found p{
+    font-size:1rem;
+    color: whitesmoke;
+    margin: 1rem;
+    text-align: center;
+}
+div .not-found a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 10vh;
+    border-radius: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: aqua;
+    background-color: #34145f;
+    box-shadow: 5px 5px 15px #cc5f5f;
+    transition: ease .5s;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+div .not-found a:hover{
+    scale: 1.05;
+}
+
+/*invoice page */
+
+div .invoice{
+    display: flex;
+    flex-direction: column;
+    min-height: 92vh;
+}
+div .Search-product{
+    width: 100%;
+    height: 10vh;
+    background-color:#cc5f5f;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;  
+}
+div .search-info input{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+div .Search-product input{
+    height: 30px;
+    margin-top: 0.5rem;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    
+}
+div .Search-product input::placeholder{
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+div .Search-product input:focus{
+    outline: none;
+    color: rgb(215, 233, 231);
+    
+}
+
+div .bill-table{
+    align-items: center;
+    height: 72vh;
+    background-color: #2E344C;
+}
+div .bill-btns{
+    height: 10vh;
+    background-color:#34145f ;
+}
+

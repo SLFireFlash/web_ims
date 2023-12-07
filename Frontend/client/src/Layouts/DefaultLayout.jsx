@@ -36,7 +36,7 @@ export default function DefaultLayout(){
                 </aside>
                 <div className="default-content">
                     <div className="default-header">
-                        <h3>Interface</h3>
+                        <Link to='/'><h2>Home</h2></Link>
                         <h3>user info</h3>
                     </div>
                     <main>
