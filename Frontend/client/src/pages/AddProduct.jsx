@@ -2,6 +2,9 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import axiosClient from "../AxiosClient";
 
+//alerts
+import Swal from 'sweetalert2'
+
 
 
 export default function AddProduct(){
@@ -25,7 +28,13 @@ export default function AddProduct(){
         axiosClient.post('/newproduct',payload)
 
         .then(({data})=>{
-            console.log(data);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: data.message,
+                showConfirmButton: false,
+                timer: 2500
+              });
         })
         .catch(err =>{
             console.log(err);

@@ -1,14 +1,14 @@
 
-export default function StatusCard({content}){
+export default function StatusCard({CardName ,content }){
 
     return(
         <>
             <div className="card">
                 <div className="card-content">
-                    <h1>1290</h1>
+                    <h1>{content}</h1>
                 </div>
                 <div className="card-title">
-                    <h3>Total Products</h3>
+                    <h3>{CardName}</h3>
                 </div>
             </div>
         </>

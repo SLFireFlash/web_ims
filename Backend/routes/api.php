@@ -24,8 +24,9 @@ Route::middleware('auth:sanctum')->group(function(){
     });
 
     Route::get('/logout', [AuthController::class, 'LogOut']);
-    Route::post('/newproduct', [ProductController::class, 'AddProduct']);
 
+    Route::post('/newproduct', [ProductController::class, 'AddProduct']);
+    Route::get('/productcount', [ProductController::class, 'productCount']);
 });
 
 
