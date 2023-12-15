@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ProductController;
 
 
 
@@ -23,6 +24,7 @@ Route::middleware('auth:sanctum')->group(function(){
     });
 
     Route::get('/logout', [AuthController::class, 'LogOut']);
+    Route::post('/newproduct', [ProductController::class, 'AddProduct']);
 
 });
 
@@ -31,3 +33,4 @@ Route::middleware('auth:sanctum')->group(function(){
 
 Route::post('/signup', [AuthController::class, 'SingUp']);
 Route::post('/login', [AuthController::class, 'LogIn']);
+
