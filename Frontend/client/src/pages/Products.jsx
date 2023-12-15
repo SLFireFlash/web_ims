@@ -1,10 +1,22 @@
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import { useEffect } from 'react';
+import axiosClient from '../AxiosClient';
+
 
 
 
 
 export default function Products(){
+    useEffect(()=>{
+        axiosClient.get('/allproducts')
+        .then((data)=>{
+            console.log(data);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    })
 
     return(
         <div className="product-table">

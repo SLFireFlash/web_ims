@@ -461,6 +461,7 @@ div .not-found{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     align-items: center;
     background-color: #5C6468;
 }
@@ -485,7 +486,7 @@ div .not-found a{
     width: 20%;
     height: 10vh;
     border-radius: 1rem;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: aqua;
     background-color: #34145f;
