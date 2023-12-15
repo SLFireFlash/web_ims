@@ -29,7 +29,7 @@ export default function AddProduct(){
 
         .then(({data})=>{
             Swal.fire({
-                position: "top-end",
+                position: "center",
                 icon: "success",
                 title: data.message,
                 showConfirmButton: false,

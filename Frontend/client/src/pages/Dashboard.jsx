@@ -39,7 +39,7 @@ export default function Dashboard(){
                         <div className="button-row">
                             <Link to={'/new_bill'} > Create New Bill </Link>
                             <Link to={'/add_product'} >Add New Product</Link>
-                            <Link to={'/all_products'}>View All products</Link>
+                            <Link to={'/products'}>View All products</Link>
                         </div>
                         <div className="button-row">
                             <Link to={'update_product'} >Update Products</Link>
