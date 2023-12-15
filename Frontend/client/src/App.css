@@ -33,7 +33,6 @@ div .outlet-side{
     background-color: #446285;
 }
 div .sign{
-
     width: 80%;
     color: white;
 
@@ -541,7 +540,7 @@ div .Search-product input:focus{
 
 div .bill-table{
     align-items: center;
-    height: 72vh;
+    height: 70vh;
     background-color: #2E344C;
 }
 div .bill-btns{
@@ -549,3 +548,43 @@ div .bill-btns{
     background-color:#34145f ;
 }
 
+/*add new product*/
+
+div .NewProduct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    color:  rgb(49, 56, 70);
+}
+
+/*update product*/
+/* div .button-row-update{
+    display: none;
+} */
+div .button-row-update{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.5rem;
+}
+
+div .button-row-update a{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 5vh;
+    background-color:white ;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: aqua;
+    background-color: #5459e7;
+    box-shadow: 5px 5px 15px #6c48ee;
+    transition: ease .5s;
+}
+div .button-row-update a:hover{
+    scale: 1.02;
+}

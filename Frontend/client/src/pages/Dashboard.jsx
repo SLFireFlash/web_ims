@@ -24,14 +24,14 @@ export default function Dashboard(){
                         <Link to={'/all_products'}>View All products</Link>
                     </div>
                     <div className="button-row">
-                        <Link to={''} >Update Products</Link>
+                        <Link to={'update_product'} >Update Products</Link>
                         <Link to={''} >Remove Product</Link>
                         <Link to={'/account'} >Account Info</Link>
                     </div>
                     <div className="button-row-mobi">
                         <Link to={'/products'} >View All products</Link>
                         <Link to={'/invoice'} >Make New Bill</Link>
-                        <Link to={'/update'}>Update Products</Link>
+                        <Link to={'/add_product'}>Add/Update Products</Link>
                     </div>
                     <div className="button-row-mobi">
                         <Link to={'/suplyers'} >Suplyers</Link>

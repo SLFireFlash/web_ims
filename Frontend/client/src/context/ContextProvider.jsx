@@ -9,9 +9,14 @@ const StateContext = createContext({
   })
 
 export const ContextProvider = ({children}) => {
+
+    //dev only
+    // const [user, setUser] = useState("Lahiru");
+    // const [token, _setToken] = useState(123);
+
+    //prod
+    const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
     const [user, setUser] = useState({});
-    const [token, _setToken] = useState(123);
-    // const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
 
     const setToken = (token) => {
         _setToken(token)

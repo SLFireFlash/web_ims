@@ -1,26 +1,34 @@
 import {Navigate, createBrowserRouter} from "react-router-dom";
 
 
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/Notfound";
-import DefaultLayout from "./Layouts/DefaultLayout";
+//guest layout
 import GuestLayout from "./Layouts/GuestLayout";
-import LoginHelp from "./pages/LoginHelp";
-import Account from './pages/Account';
-import Customers from './pages/Customers'
-import Invoice from './pages/Invoice'
-import Logout from './pages/Logout'
-import Products from './pages/Products'
-import Suplyer from './pages/Suplyer'
-
 import RegisterNew from "./pages/RegisterNew";
 import LoginNew from "./pages/LoginNew";
 import PwResetReqest from "./pages/PwResetReqest";
 import ResetPassword from "./pages/ResetPassword";
 import PwResetCheck from "./pages/PwResetCheck";
-import DashboardNew from "./pages/DashboardNew";
+
+//default layout
+import DefaultLayout from "./Layouts/DefaultLayout";
+import Dashboard from "./pages/Dashboard";
+import AddProduct from "./pages/AddProduct";
+import Products from './pages/Products';
+import Invoice from './pages/Invoice';
+import Customers from './pages/Customers';
+import Suplyer from './pages/Suplyer';
+import Account from './pages/Account';
+
+
+//others
+import NotFound from "./pages/Notfound";
+import UpdateProduct from "./pages/UpdateProduct";
+
+
+
+
+
+
 
 const router = createBrowserRouter([
     {
@@ -56,12 +64,12 @@ const router = createBrowserRouter([
                 element: <Suplyer />
             },
             {
-                path:'/logout',
-                element:<Logout />
+                path:'/add_product',
+                element:<AddProduct />
             },
             {
-                path:'/dashboard_new',
-                element:<DashboardNew />
+                path:'/update_product',
+                element:<UpdateProduct />
             }
         ]
     },
@@ -71,22 +79,10 @@ const router = createBrowserRouter([
         children:[
             {
                 path: '/register',
-                element: <Register />
+                element: <RegisterNew />
             },
             {
                 path: '/login',
-                element:<Login />
-            },
-            {
-                path:'/login_help',
-                element:<LoginHelp />
-            },
-            {
-                path:'/register_new',
-                element:<RegisterNew />
-            },
-            {
-                path:'/login_new',
                 element:<LoginNew />
             },
             {

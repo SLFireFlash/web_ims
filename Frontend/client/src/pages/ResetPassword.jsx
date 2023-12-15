@@ -21,7 +21,7 @@ export default function ResetPassword(){
               <button type="submit" className="btn btn-primary">Reset Password</button>
           </div>
           <p className="forgot-password text-right">
-              Go Back To Login <Link to="/login_new">login?</Link>
+              Go Back To Login <Link to="/login">login?</Link>
           </p>
         </form>
 

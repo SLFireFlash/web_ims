@@ -16,7 +16,7 @@ export default function PwResetCheck(){
                 </div>
             </Link>
             <p className="forgot-password text-right">
-                Already Have An Account? <Link to="/login_new">Login</Link>
+                Already Have An Account? <Link to="/login">Login</Link>
             </p>
         </form>
     </div>
