@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import axiosClient from "../AxiosClient";
 
 
 
@@ -10,6 +11,27 @@ export default function AddProduct(){
     const Quantity =useRef();
     const BuyingPrice =useRef();
     const SellingPrice =useRef();
+
+    const NewProduct =()=>{
+        const payload ={
+            vehicle_name:VehicleName.current.value,
+            product_name:ProductName.current.value,
+            product_brand:ProductBrand.current.value,
+            Quantity:Quantity.current.value,
+            buying_price:BuyingPrice.current.value,
+            selling_price:SellingPrice.current.value,
+        }
+        console.log(payload);
+        axiosClient.post('/newproduct',payload)
+
+        .then(({data})=>{
+            console.log(data);
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+
+    }
 
 
     return(
@@ -43,7 +65,7 @@ export default function AddProduct(){
                     </div>
 
                     <div className="d-grid">
-                        <button type="button"  className="btn btn-primary">Add Product</button>
+                        <button type="button" onClick={NewProduct}  className="btn btn-primary">Add Product</button>
                     </div>
                     <div className="d-grid">
                        <p>Update Exsisting product ? <Link to={'/update_product'}>Update Product</Link></p>
