@@ -26,8 +26,25 @@ class ProductController extends Controller
 
         return response(
             [
-                'message' => 'Product Name : ' . $product -> product_name . ' Product Added'
+                'message' =>$product -> product_name . ' Added to the database'
             ],200
             );
+   }
+   public function productCount(Request $request){
+        
+        $count = Product::count();
+        $Quantity = Product::pluck('Quantity');
+        $Quantityarray = $Quantity->toArray();
+
+        $maxValue = max($Quantityarray);
+        $minValue = min($Quantityarray);
+
+        return response( [
+            'productCount' => $count,
+            'maxValue' => $maxValue,
+            'minValue' => $minValue,
+
+        ],200);
+
    }
 }

@@ -17,7 +17,6 @@ export default function DefaultLayout(){
         .then(({data})=>{
             setUser(data)
         })
-
     },[])
     const Logout =()=>{
         console.log('logout request');
