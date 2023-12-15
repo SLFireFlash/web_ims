@@ -9,6 +9,8 @@ use http\Env\Response;
 
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\RemoveProductRequest;
+use App\Http\Requests\UpdatProductRequest;
 
 class ProductController extends Controller
 {
@@ -45,6 +47,28 @@ class ProductController extends Controller
             'minValue' => $minValue,
 
         ],200);
+   }
+   public function productLoad(Request $request){
+        
+        $allproducts = Product::paginate(10);
+        return response([
+            'All_Products'=> $allproducts
+        ],200);
+   }
 
+   public function UpdateProduct(UpdatProductRequest $request){
+
+
+   }
+   public function RemoveProduct(RemoveProductRequest $request){
+        $data = $request->validated();
+        $id = $data['id'];
+        $product =Product::where('id', $id)->delete();
+
+        return response(
+            [
+                'message'=>  $product
+            ],200
+            );
    }
 }

@@ -1,22 +1,57 @@
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import { useEffect } from 'react';
+import { useEffect,useState} from 'react';
 import axiosClient from '../AxiosClient';
+import { Table, Button, Pagination } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { PaginationControl } from 'react-bootstrap-pagination-control';
 
 
 
 
 
 export default function Products(){
-    useEffect(()=>{
-        axiosClient.get('/allproducts')
-        .then((data)=>{
-            console.log(data);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-    })
+
+    const [products, setProducts] = useState([]);
+    const [allproducts,setAllproducts]=useState(1);
+    const [perPage,serPerPage] =useState(1);
+    const [page,setPage] = useState(1) ;     
+    useEffect(() => {
+        fetchData();
+    }, [page]);
+      
+    const fetchData = async () => {
+        try {
+            const response = await axiosClient.get(`/allproducts?page=${page}`);
+                setProducts(response.data.All_Products.data);
+                setAllproducts(response.data.All_Products.total);
+                serPerPage(response.data.All_Products.per_page);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    };
+
+    const EditProduct = (id,type)=>{
+
+        if(type == 'Update'){
+            const payload ={
+                id: id
+            }
+            axiosClient.post('/updateProduct',payload)
+            .then(({data})=>{
+                console.log(data);
+            })
+        }else{
+            const payload ={
+                id: id
+            }
+            axiosClient.post('/removeProduct',payload)
+            .then(({data})=>{
+                console.log(data);
+            })
+
+        }
+    }
+
+    
 
     return(
         <div className="product-table">
@@ -24,81 +59,44 @@ export default function Products(){
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
-                    <th>Brand</th>
+                    <th>vehicle name</th>
+                    <th>product name</th>
+                    <th>product brand</th>
+                    <th>Quantity</th>
                     <th>buy Price</th>
                     <th>Sell Price</th>
-                    <th>Quantity</th>
-                    <th>Edit</th>
                     <th>Update</th>
                     <th>Remove</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><Button variant="outline-primary" className='w-100'>Edit</Button></td>
-                    <td><Button variant="outline-warning" className='w-100'>Update</Button></td>
-                    <td><Button variant="outline-danger " className='w-100'>Remove</Button></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><Button variant="outline-primary" className='w-100'>Edit</Button></td>
-                    <td><Button variant="outline-warning" className='w-100'>Update</Button></td>
-                    <td><Button variant="outline-danger " className='w-100'>Remove</Button></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><Button variant="outline-primary" className='w-100'>Edit</Button></td>
-                    <td><Button variant="outline-warning" className='w-100'>Update</Button></td>
-                    <td><Button variant="outline-danger " className='w-100'>Remove</Button></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><Button variant="outline-primary" className='w-100'>Edit</Button></td>
-                    <td><Button variant="outline-warning" className='w-100'>Update</Button></td>
-                    <td><Button variant="outline-danger " className='w-100'>Remove</Button></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><Button variant="outline-primary" className='w-100'>Edit</Button></td>
-                    <td><Button variant="outline-warning" className='w-100'>Update</Button></td>
-                    <td><Button variant="outline-danger " className='w-100'>Remove</Button></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><Button variant="outline-primary" className='w-100'>Edit</Button></td>
-                    <td><Button variant="outline-warning" className='w-100'>Update</Button></td>
-                    <td><Button variant="outline-danger " className='w-100'>Remove</Button></td>
-                </tr>
+                {products.map((product) => (
+                    <tr key={product.id}>
+                    <td>{product.id}</td>
+                    <td>{product.vehicle_name}</td>
+                    <td>{product.product_name}</td>
+                    <td>{product.product_brand}</td>
+                    <td>{product.Quantity}</td>
+                    <td>{product.buying_price}</td>
+                    <td>{product.selling_price}</td>
+                    <td><Button type='button' variant="outline-warning" onClick={() => EditProduct(product.id,'Update')}  className='w-100'>Update</Button></td>
+                    <td><Button variant="outline-danger" onClick={() => EditProduct(product.id,'Remove')}  className='w-100'>Remove</Button></td>
+                    </tr>
+                ))}
             </tbody>
       </Table>
+      <PaginationControl
+        page={page}
+        between={6}
+        total={allproducts}
+        limit={perPage}
+        changePage={(page) => {
+        setPage(page)
+        }}
+        ellipsis={1}
+    />
+
+
 
         </div>
 
