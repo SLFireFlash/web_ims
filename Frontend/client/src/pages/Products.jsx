@@ -1,22 +1,26 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect,useRef,useState} from 'react';
+import { useEffect,useState} from 'react';
 import axiosClient from '../AxiosClient';
 import { Table, Button, Form,Modal } from 'react-bootstrap';
 import { PaginationControl } from 'react-bootstrap-pagination-control';
 import Swal from 'sweetalert2'
+import { ThreeDots } from  'react-loader-spinner'
 
 
 
 
 
 export default function Products(){
-    const [Id,setId]  = useState(0);
+const [Id,setId]  = useState(0);
     const [Quantity,setQuantity]  = useState(0);
     const [buyingPrice,setbuying_price]  = useState(0);
     const [productBrand,setproduct_brand]  = useState('No Brand');
     const [productName,setproduct_name]  = useState('No Name');
     const [sellingPrice,setselling_price]  = useState(0);
     const [vehicleName,setvehicle_name]  = useState('No Name');
+
+    const [Loader,setLoader] = useState(true);
+
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -25,8 +29,9 @@ export default function Products(){
     const [products, setProducts] = useState([]);
     const [allproducts,setAllproducts]=useState(1);
     const [perPage,serPerPage] =useState(1);
-    const [page,setPage] = useState(1) ;     
+    const [page,setPage] = useState(1) ;    
     useEffect(() => {
+       setLoader(true)
         fetchData();
     }, [page]);
       
@@ -36,11 +41,12 @@ export default function Products(){
                 setProducts(response.data.All_Products.data);
                 setAllproducts(response.data.All_Products.total);
                 serPerPage(response.data.All_Products.per_page);
+                setLoader(false)
         } catch (error) {
             console.error('Error fetching products:', error);
         }
     };
-    const loadProductData =(product,type)=>{
+const loadProductData =(product,type)=>{
         setId(product.id);
         setQuantity(product.Quantity);
         setbuying_price(product.buying_price);
@@ -138,22 +144,38 @@ export default function Products(){
                     <td>{product.buying_price}</td>
                     <td>{product.selling_price}</td>
                     <td><Button type='button' variant="outline-warning" onClick={() => loadProductData(product)}  className='w-100'>Edit</Button></td>
-                    <td><Button variant="outline-danger" onClick={() => EditProduct(product)}  className='w-100'>Remove</Button></td>
+                    <td><Button variant="outline-danger" onClick={() => RemoveProduct(product)}  className='w-100'>Remove</Button></td>
                     </tr>
                 ))}                  
             </tbody>
-      </Table>
-      <PaginationControl
-        page={page}
-        between={6}
-        total={allproducts}
-        limit={perPage}
-        changePage={(page) => {
-        setPage(page)
-        }}
-        ellipsis={1}
-     />
-      <Modal show={show} onHide={handleClose}>
+            </Table>
+            {/* loader start */}
+            <ThreeDots 
+              height="80" 
+              width="80" 
+              radius="9"
+              color="#2929a6" 
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={Loader}
+              />
+              {/* lodaer end */}
+            {/* pagination stat */}
+              <PaginationControl
+                page={page}
+                between={6}
+                total={allproducts}
+                limit={perPage}
+                changePage={(page) => {
+                setPage(page)
+                }}
+                ellipsis={1}
+            />
+            {/* pagination end */}
+
+ 
+        <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Update Product</Modal.Title>
         </Modal.Header>
@@ -199,10 +221,7 @@ export default function Products(){
           </Button>
         </Modal.Footer>
       </Modal>
-
-
-
-        </div>
+    </div>
 
 
     );

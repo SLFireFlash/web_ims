@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import UpdateModal from "../components/UpdateModal"
+
 
 export default function(){
     return(
@@ -14,7 +16,7 @@ export default function(){
                 </div>
             </div>
             <div className="bill-table">
-                
+                <UpdateModal />
             </div>
 
             <div className="bill-btns">

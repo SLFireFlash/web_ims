@@ -5,22 +5,24 @@ import axiosClient from "../AxiosClient";
 import StatusBar from "../components/StatusBar";
 
 export default function Dashboard(){
-    let [productCount,setProductCount] =useState('');
-    let [maxCount,setmaxCount] =useState('');
-    let [minCount,setminCount] =useState('');
+    const [productCount,setProductCount] =useState('');
+    const [maxCount,setmaxCount] =useState('');
+    const [minCount,setminCount] =useState('');
+    const [visible,setvisible] =useState(false);
 
-
-    useEffect(()=>{
-        axiosClient.get('/productcount')
-        .then(({data})=>{
-            setProductCount(data.productCount);
-            setmaxCount(data.maxValue);
-            setminCount(data.minValue);
-        })
-    });
-
-
-
+        useEffect(()=>{
+            setvisible(true);
+            axiosClient.get('/productcount')
+            .then(({data})=>{
+                setProductCount(data.productCount);
+                setmaxCount(data.maxValue);
+                setminCount(data.minValue);
+                setvisible(false);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+        }, []);
     return(
         <>
 
@@ -29,9 +31,9 @@ export default function Dashboard(){
                         <StatusBar />
                     </div>
                     <div className="dashboard-status">
-                        <StatusCard CardName='Number of products' content={productCount} />
-                        <StatusCard CardName='Lowest Stock products' content={minCount}/>
-                        <StatusCard CardName='highest Stock products' content={maxCount}/>
+                        <StatusCard CardName='Number of products' visible={visible} content={productCount} />
+                        <StatusCard CardName='Lowest Stock products' visible={visible} content={minCount}/>
+                        <StatusCard CardName='highest Stock products' visible={visible}  content={maxCount}/>
 
                     </div>
 
