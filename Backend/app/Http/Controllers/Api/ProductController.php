@@ -57,18 +57,47 @@ class ProductController extends Controller
    }
 
    public function UpdateProduct(UpdatProductRequest $request){
+        $data = $request->validated();
+        $affectedRows = Product::where("id", $data['id'])->update(
+                        [
+                            "Quantity" => $data['Quantity'],
+                            "buying_price" => $data['buying_price'],
+                            "product_brand" => $data['product_brand'],
+                            "product_name" => $data['product_name'],
+                            "selling_price" => $data['selling_price'],
+                            "vehicle_name" => $data['vehicle_name'],
+                        ]);
+
+        if($affectedRows >0){
+            return response([
+                'message'=>"Product Data Updated"
+            ],200);        
+        }else{
+            return response([
+                'message' => "Something went wrong"
+            ],404);
+        }
 
 
    }
    public function RemoveProduct(RemoveProductRequest $request){
         $data = $request->validated();
         $id = $data['id'];
-        $product =Product::where('id', $id)->delete();
+        $affectedRows =Product::where('id', $id)->delete();
+        if($affectedRows > 0){
+            return response(
+                [
+                    'message'=>'Product Removed Successful'
+                ],200
+                );
+        }else{
+            return response(
+                [
+                    'message'=>'Product Removed UnSuccessful'
+                ],404
+                );
+        }
 
-        return response(
-            [
-                'message'=>  $product
-            ],200
-            );
+
    }
 }

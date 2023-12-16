@@ -590,3 +590,7 @@ div .button-row-update a{
 div .button-row-update a:hover{
     scale: 1.02;
 }
+/*product page*/
+div .product-input input{
+    width: 'fit-content';
+}

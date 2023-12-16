@@ -22,9 +22,9 @@ export default function(){
                     <p className="text-light">Add New product ? <Link to={'/add_product'}>Add Product</Link></p>
                 </div> */}
                 <div className="button-row-update">
-                    <Link to={'/new_bill'} > Bill </Link>
+                    <Link to={'/invoice'} > Bill </Link>
                     <Link to={'/add_product'} >Add Product</Link>
-                    <Link to={'/all_products'}>products</Link>
+                    <Link to={'/products'}>All products</Link>
                 </div>
             </div>
         </div>

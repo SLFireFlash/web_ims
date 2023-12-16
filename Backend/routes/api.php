@@ -30,7 +30,6 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('/allproducts', [ProductController::class, 'productLoad']);
 
     Route::post('/updateProduct', [ProductController::class, 'UpdateProduct']);
-    Route::post('/removeProduct', [ProductController::class, 'RemoveProduct']);
 });
 
 
@@ -38,4 +37,6 @@ Route::middleware('auth:sanctum')->group(function(){
 
 Route::post('/signup', [AuthController::class, 'SingUp']);
 Route::post('/login', [AuthController::class, 'LogIn']);
+Route::post('/removeProduct', [ProductController::class, 'RemoveProduct']);
+
 

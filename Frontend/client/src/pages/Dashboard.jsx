@@ -37,12 +37,12 @@ export default function Dashboard(){
 
                     <div className="dashboard-buttons">
                         <div className="button-row">
-                            <Link to={'/new_bill'} > Create New Bill </Link>
+                            <Link to={'/invoice'} > Create New Bill </Link>
                             <Link to={'/add_product'} >Add New Product</Link>
                             <Link to={'/products'}>View All products</Link>
                         </div>
                         <div className="button-row">
-                            <Link to={'update_product'} >Update Products</Link>
+                            <Link to={'/update_product'} >Update Products</Link>
                             <Link to={''} >Remove Product</Link>
                             <Link to={'/account'} >Account Info</Link>
                         </div>
@@ -59,7 +59,7 @@ export default function Dashboard(){
                     </div>
             </div>
             <div className="dashboard-loading dashboard-loading-off">
-                <div class="ring">Loading
+                <div className="ring">Loading
                     <span></span>
                 </div>
             </div>
