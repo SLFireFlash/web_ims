@@ -165,7 +165,7 @@ aside{
     display: flex;
     flex-direction: column;
     min-width: 15%;
-    background-color: #5024a1;
+    background-color: #404e66;
     align-items: center;
     justify-content: space-between;
 }
@@ -178,19 +178,15 @@ div .main-buttons{
 div .main-buttons a{
     font-size: 1.5rem;
     display: flex;
-    color: white;
+    color: #bbc6d8;
     height: 40px;
-    justify-content: center;
-    border-radius: .5rem;
-    background-color: #2d32d6;
-    margin-bottom: 1rem;
     transition: ease .5s;
-
+    margin-bottom: .5rem;
 }
+
 div .main-buttons a:hover{
-    scale: 1.02;
-    background-color: #22e785;
-    color: #2E344C;
+    scale: 1.01;
+    color: #c57477;
 }
 div .other-buttons{
     display: flex;
@@ -201,39 +197,123 @@ div .other-buttons{
 div .other-buttons a{
     font-size: 1.5rem;
     display: flex;
-    color: white;
+    color: #bbc6d8;
     height: 40px;
-    justify-content: center;
-    border-radius: .5rem;
-    background-color: #2d32d6;
-    margin-bottom: 1rem;
     transition: ease .5s;
-
-
+    margin-bottom: .5rem;
 }
+
 .acconut-cls:hover{
-    scale: 1.02;
-    background-color: #adec38;
-    color: #2E344C;
+    scale: 1.01;
+    color: #14d29a;
 }
 .logout-cls:hover{
-    scale: 1.02;
-    background-color: #bd341c;
+    scale: 1.01;
+    color: #d26675;
 }
 div .default-content {
-    min-width: 85%;
-    background-color: #22e785;
+    min-width: 100%;
+    background-color: #f4f5fa;
+}
+div .testA{
+    box-sizing: border-box;
 }
 div .default-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 8vh;
-    border-bottom: 2px solid black;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 15px #b2b9d4;
+    
 }
-div .default-header h3{
-    margin-left: 1rem;
+/*component status bar cards */
+div .main-dashboard-Card{
+    min-height:20vh;
+    display: flex;
+    flex-direction: column;
+    width: 23%;
+}
+div .main-card-body{
+    height: 13vh;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    box-shadow: 5px 5px 15px #b2b9d4;
+}
+div .main-card-body img{
+    width: 3rem;
+}
+
+div .main-card-titles{
+    height: 7vh;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    color: #ffffff;
+}
+div .main-card-titles img{
+    width: 2rem;
+}
+/*dashboard charts*/
+div .mainChart{
+    height: 45vh;
+    width: 65%;
+    margin-top: 2vh;
+    box-shadow: 5px 5px 15px #b2b9d4;
+}
+div .chartData{
+    background-color: #04AA6D;
+}
+div .chartTitle{
+    padding-top:.5rem;
+    padding-left:.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     margin-right: 1rem;
+}
+/*dahboard button*/
+div .dashboardButton{
+    display: flex;
+    flex-direction: column;
+    min-height: 45vh;
+    width: 30%;
+    margin-top: 2vh;
+    box-shadow: 5px 5px 15px #b2b9d4;
+}
+div .no-display{
+    display: none;
+}
+div .top-sales{
+    margin: .2rem;
+}
+div .top-sales p{
+    font-weight: 600;
+    color: #5c5d5f;
+}
+
+div .chartTitle h3{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #5c5d5f;
+}
+div .chartTitle p{
+    font-size: .75rem;
+    color: #5c5d5f;
+}
+div .chartData{
+    height: 35vh;
+    width: 100%;
+}
+div .chartData img{
+    width: 100%;
+    height: 100%;
 }
 
 /*dashboard */
@@ -242,33 +322,37 @@ div .dashboard{
     flex-direction: column;
     min-height: 90vh;
     align-items: center;
+    padding-top: 2vh;
+    padding-left: .5rem;
+    padding-right: 0.5rem;
 }
 div .dashboard-welcome{
-    margin-top: 1rem;
-    display:flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    width: 95%;
-    height: 15vh;
-    border-radius: 1rem;
-    background-color: rgb(101, 235, 235);
-    box-shadow: 5px 5px 15px #753232;
-    color: #235a99;
-
-}
-div .dashboard-status{
     display:flex;
     flex-direction: row;
+    justify-content: space-between;
     width: 100%;
+    height: 20vh;
+}
+div .dashboard-status{
+    height: 45vh;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
 }
 div .dashboard-buttons{
-    display: flex;
-    flex-direction: column;
-    margin-right: 1rem;
-    margin-left: 1rem;
+    display: flex;    
     width: 100%;
+    margin-top: 4vh;
+    height: 20vh;
+    background-color: #ffffff;
+    padding: 1rem;
+    justify-content:center;
+    align-items: center;
+    box-shadow: 5px 5px 15px #b2b9d4;
 }
+
 
 
 /* card comp*/
@@ -542,10 +626,15 @@ div .Search-product input:focus{
 
 div .bill-table{
     align-items: center;
-    height: 70vh;
+    height: 72vh;
     background-color: #2E344C;
+    overflow-y: scroll;
 }
 div .bill-btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     height: 10vh;
     background-color:#34145f ;
 }

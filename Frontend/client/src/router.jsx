@@ -18,6 +18,7 @@ import Invoice from './pages/Invoice';
 import Customers from './pages/Customers';
 import Suplyer from './pages/Suplyer';
 import Account from './pages/Account';
+import TestA from "./pages/Atest";
 
 
 //others
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
             {
                 path:'/update_product',
                 element:<UpdateProduct />
+            },
+            {
+                path:'/Atest0',
+                element:<TestA />
             }
         ]
     },

@@ -1,5 +1,6 @@
 import './App.css';
 import './media.css';
+import './HamMenu.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle.min";
 

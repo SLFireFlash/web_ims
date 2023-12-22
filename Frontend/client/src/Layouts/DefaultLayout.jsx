@@ -2,9 +2,23 @@ import { Navigate, Outlet ,Link} from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
 import { useEffect, useRef, useState } from "react";
 import axiosClient from "../AxiosClient";
-
-//alerts
 import Swal from 'sweetalert2'
+import SideMenu from "../components/SideMenu";
+
+import dashboardI from '../assets/svg/dashboard.svg';
+import accountI from '../assets/svg/account.svg';
+import customersI from '../assets/svg/customers.svg';
+import logoutI from '../assets/svg/logout.svg';
+import invoiceI from '../assets/svg/invoice.svg';
+import productsI from '../assets/svg/products.svg';
+import suplyerI from '../assets/svg/suplyer.svg';
+import homeI from '../assets/svg/Home.svg';
+import notificationsI from '../assets/svg/notifications.svg';
+import contact_supportI from '../assets/svg/contact_support.svg';
+import analyticI from '../assets/svg/analytics.svg';
+
+
+
 
 
 export default function DefaultLayout(){
@@ -48,8 +62,6 @@ export default function DefaultLayout(){
           });
         
     }
-  
-
     if(!token){
         return(
             <Navigate to="/login" />
@@ -60,27 +72,39 @@ export default function DefaultLayout(){
             
             <>
             <div className="defult-layout ">
-
-                <aside>
-                    <div className="main-buttons">
-                        <Link to={'/dashboard'}>Dashboard</Link>
-                        <Link to={'/products'}>Products</Link>
-                        <Link to={'/invoice'}>Invoice</Link>
-                        <Link to={'/customers'}>Customers</Link>
-                        <Link to={'/suplyers'}>Suplyer</Link>
-
-                    </div>
-                    <div className="other-buttons">
-                        <Link to={'/account'} className="acconut-cls">Account</Link>
-                        <Link onClick={Logout} className="logout-cls" to={'/login'} >Logout</Link>
+               
+                {/* <aside>
+                    <div className="main-buttons ms-2">
+                        <img src={analyticI} alt="side hero" />
+                        <Link to={'/dashboard'}> <img src={dashboardI} alt="dashboard" className="me-2" />Dashboard</Link>
+                        <Link to={'/products'}> <img src={productsI}className="me-2" alt="Products" />Products</Link>
+                        <Link to={'/invoice'}> <img src={invoiceI}className="me-2" alt="Invoice" />Invoice</Link>
+                        <Link to={'/customers'}> <img src={customersI}className="me-2" alt="Customers" />Customers</Link>
+                        <Link to={'/suplyers'}> <img src={suplyerI}className="me-2" alt="Suplyer" />Suplyer</Link>
 
                     </div>
+                    <div className="other-buttons ms-2">
+                        <Link to={'/account'}  className="acconut-cls"> <img src={accountI}className="me-2" alt="Account" />Account</Link>
+                        <Link onClick={Logout} className="logout-cls" to={'/login'} > <img src={logoutI}className="me-2" alt="Logout" />Logout</Link>
 
-                </aside>
+                    </div>
+
+                </aside> */}
                 <div className="default-content">
                     <div className="default-header">
-                        <Link to='/'><h2>Home</h2></Link>
-                        <h3>Hi,{user.name}</h3>
+                        
+                        <div className="d-flex">
+                            <SideMenu />
+                            <Link to='/' className="ms-5"><img src={homeI} alt="Home"className="ms-2 w-100" /></Link>
+                        </div>
+                        <div className="me-2 d-flex">
+                            <Link to='/'><img src={notificationsI} alt="notifications" className="me-2 w-100" /></Link>
+                            <h4 className="ms-2 me-2">{user.name}</h4>
+                        </div>
+                        
+
+                        {/* <Link to='/'><h2>Home</h2></Link>
+                        <h3>Hi,{user.name}</h3> */}
                     </div>
                     <main>
                         <Outlet />

@@ -29,7 +29,8 @@ const [Id,setId]  = useState(0);
     const [products, setProducts] = useState([]);
     const [allproducts,setAllproducts]=useState(1);
     const [perPage,serPerPage] =useState(1);
-    const [page,setPage] = useState(1) ;    
+    const [page,setPage] = useState(1) ; 
+       
     useEffect(() => {
        setLoader(true)
         fetchData();
@@ -91,7 +92,7 @@ const loadProductData =(product,type)=>{
             })
     }
 
-    const EditProduct = (product)=>{
+    const RemoveProduct = (product)=>{
         const payload ={
             id: product.id
         }

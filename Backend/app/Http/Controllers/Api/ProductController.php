@@ -100,4 +100,56 @@ class ProductController extends Controller
 
 
    }
+   public function ProductSearch(Request $request ){
+    $ProdcutName = $request['ProductName'];
+    $VehicleName =$request['VehicleName'];
+    $brand =$request['Brand'];
+    $SearchResult ='';
+
+    // if($ProdcutName != null){
+    //     if($VehicleName !=null){
+    //         if($brand !=null){
+    //             $SearchResult = Product::where('product_name',$ProdcutName)
+    //                                     ->where('vehicle_name',$VehicleName)
+    //                                     ->where('product_brand',$brand)
+    //                                     ->get();
+    //         }else{
+    //          $SearchResult = Product::where('product_name',$ProdcutName)
+    //                                  ->where('vehicle_name',$VehicleName)
+    //                                  ->get();
+    //         }
+    //     }else{
+    //         $SearchResult = Product::where('product_name',$ProdcutName)
+    //                                  ->get();
+    //     }
+    // }else{
+    //     if($VehicleName !=null){
+    //         if($brand != null){
+    //             $SearchResult = Product::where('vehicle_name',$VehicleName)
+    //                                     ->where('product_brand',$brand)
+    //                                     ->get();
+    //         }else{
+    //             $SearchResult = Product::where('vehicle_name',$VehicleName)
+    //                                     ->get();
+    //         }
+
+    //     }
+    // }
+    $SearchResult = Product::when($ProdcutName, function ($query) use ($ProdcutName) {
+        $query->where('product_name', $ProdcutName);
+    })
+    ->when($VehicleName, function ($query) use ($VehicleName) {
+        $query->where('vehicle_name', $VehicleName);
+    })
+    ->when($brand, function ($query) use ($brand) {
+        $query->where('product_brand', $brand);
+    })
+    ->paginate(20);
+
+    return response([
+        'message' => 'Search Result',
+        'SearchResult' => $SearchResult
+    ],200);
+
+   }
 }
