@@ -11,7 +11,7 @@ import productsI from '../assets/svg/products.svg';
 import suplyerI from '../assets/svg/suplyer.svg';
 import analyticI from '../assets/svg/analytics.svg';
 
-export default HamMenu => {
+export default props => {
     const Logout =()=>{
         console.log('logout request');
         Swal.fire({
@@ -44,7 +44,19 @@ export default HamMenu => {
     }
   return (
     <Menu>
+        <div className="main-buttons ms-2">
+            <Link to={'/dashboard'}> <img src={dashboardI} alt="dashboard" className="me-2" />Dashboard</Link>
+            <Link to={'/products'}> <img src={productsI}className="me-2" alt="Products" />Products</Link>
+            <Link to={'/invoice'}> <img src={invoiceI}className="me-2" alt="Invoice" />Invoice</Link>
+            <Link to={'/customers'}> <img src={customersI}className="me-2" alt="Customers" />Customers</Link>
+            <Link to={'/suplyers'}> <img src={suplyerI}className="me-2" alt="Suplyer" />Suplyer</Link>
 
+        </div>
+        <div className="other-buttons ms-2">
+            <Link to={'/account'}  className="acconut-cls"> <img src={accountI}className="me-2" alt="Account" />Account</Link>
+            <Link onClick={Logout} className="logout-cls" to={'/login'} > <img src={logoutI}className="me-2" alt="Logout" />Logout</Link>
+
+        </div>
     </Menu>
   );
 };

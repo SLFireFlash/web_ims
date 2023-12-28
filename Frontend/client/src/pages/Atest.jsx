@@ -11,7 +11,7 @@ export default function TestA(){
         <>
         
         {/* <StatusBar Mdata={'$30,000'} Tdata={'Total sales'} Mimg={totalsalesI} TImg={totalsales2I} /> */}
-        <div className="ms-5 d-flex">
+        <div className="testA ms-5 d-flex">
             {/* <DashboardChart /> */}
              {/* <DashboardButton /> */}
              <HamMenu />
