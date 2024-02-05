@@ -20,7 +20,7 @@ export default function AddProduct(){
             vehicle_name:VehicleName.current.value,
             product_name:ProductName.current.value,
             product_brand:ProductBrand.current.value,
-            Quantity:Quantity.current.value,
+            quantity:Quantity.current.value,
             buying_price:BuyingPrice.current.value,
             selling_price:SellingPrice.current.value,
         }

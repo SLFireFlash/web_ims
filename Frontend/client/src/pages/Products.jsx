@@ -11,7 +11,7 @@ import { ThreeDots } from  'react-loader-spinner'
 
 
 export default function Products(){
-const [Id,setId]  = useState(0);
+    const [Id,setId]  = useState(0);
     const [Quantity,setQuantity]  = useState(0);
     const [buyingPrice,setbuying_price]  = useState(0);
     const [productBrand,setproduct_brand]  = useState('No Brand');
@@ -48,10 +48,10 @@ const [Id,setId]  = useState(0);
         }
     };
 const loadProductData =(product,type)=>{
-        setId(product.id);
-        setQuantity(product.Quantity);
+        setId(product.stock_id);
+        //setQuantity(product.quantity);
         setbuying_price(product.buying_price);
-        setproduct_brand(product.product_brand);
+        setproduct_brand(product.brand_name);
         setproduct_name(product.product_name);
         setselling_price(product.selling_price);
         setvehicle_name(product.vehicle_name);
@@ -59,13 +59,14 @@ const loadProductData =(product,type)=>{
     }
     const updateProduct = ()=>{
             const payload ={
-                Quantity: Quantity,
-                buying_price: buyingPrice,
                 id: Id,
-                product_brand: productBrand,
+                Quantity: Quantity,
+                vehicle_name: vehicleName,
                 product_name: productName,
-                selling_price: sellingPrice,
-                vehicle_name: vehicleName
+                product_brand: productBrand,
+                buying_price: parseFloat(buyingPrice) ,
+                selling_price: parseFloat(sellingPrice),
+
             }
             axiosClient.post('/updateProduct',payload)
             .then(({data})=>{
@@ -94,7 +95,7 @@ const loadProductData =(product,type)=>{
 
     const RemoveProduct = (product)=>{
         const payload ={
-            id: product.id
+            id: product.stock_id
         }
         axiosClient.post('/removeProduct',payload)
         .then(()=>{
@@ -136,12 +137,12 @@ const loadProductData =(product,type)=>{
                 </thead>
                 <tbody>
                 {products.map((product) => (
-                    <tr key={product.id}>
-                    <td>{product.id}</td>
+                    <tr key={product.stock_id}>
+                    <td>{product.stock_id}</td>
                     <td>{product.vehicle_name}</td>
                     <td>{product.product_name}</td>
-                    <td>{product.product_brand}</td>
-                    <td>{product.Quantity}</td>
+                    <td>{product.brand_name}</td>
+                    <td>{product.quantity}</td>
                     <td>{product.buying_price}</td>
                     <td>{product.selling_price}</td>
                     <td><Button type='button' variant="outline-warning" onClick={() => loadProductData(product)}  className='w-100'>Edit</Button></td>
@@ -199,7 +200,7 @@ const loadProductData =(product,type)=>{
               <Form.Control type="text" onChange={ev=>setproduct_brand(ev.target.value)} value={productBrand} placeholder="product brand" autoFocus/>
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Quantity</Form.Label>
+              <Form.Label>Update Quantity</Form.Label>
               <Form.Control type="number" onChange={ev=>setQuantity(ev.target.value)} value={Quantity} placeholder="Quantity" autoFocus/>
             </Form.Group>
             <Form.Group className="mb-3">

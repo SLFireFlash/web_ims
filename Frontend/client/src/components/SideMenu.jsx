@@ -1,5 +1,5 @@
 import React from 'react';
-import { bubble as Menu } from 'react-burger-menu';
+import { stack as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 
 import dashboardI from '../assets/svg/dashboard.svg';

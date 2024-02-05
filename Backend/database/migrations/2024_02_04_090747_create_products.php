@@ -13,13 +13,9 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table ->string('vehicle_name');
-            $table ->string('product_name');
-            $table ->string('product_brand');
-            $table ->integer('Quantity');
-            $table ->integer('buying_price');
-            $table ->integer('selling_price');
-            $table->timestamps();   
+            $table->string('product_name');
+            $table->text('product_description')->nullable();
+            $table->timestamps();
         });
     }
 

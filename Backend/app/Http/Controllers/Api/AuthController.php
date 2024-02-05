@@ -25,14 +25,14 @@ class AuthController extends Controller
 
         if($data['account_token'] == '1'){
             $user = User::create([
-                'name' => $data['name'],
+                'user_name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
             ]);
     
             $token = $user->createToken('main')->plainTextToken;
             return response([
-                'user' => $user->name,
+                'user' => $user->user_name,
                 'token' => $token
             ]);
         }else{

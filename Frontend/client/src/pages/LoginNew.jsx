@@ -13,7 +13,7 @@ export default function LoginNew(){
     const OnLogin = (ev)=>{
         ev.preventDefault();
         const LoginData={
-            Name:NameRef.current.value,
+            user_name:NameRef.current.value,
             password:PasswordRef.current.value,
         }
         axiosClient.post('/login',LoginData)

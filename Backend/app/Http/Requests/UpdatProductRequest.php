@@ -24,8 +24,8 @@ class UpdatProductRequest extends FormRequest
         return [
             'id' =>['integer'],
             'Quantity' => ['integer'],
-            'buying_price'=>['integer'],
-            'selling_price' => ['integer'],
+            'buying_price'=>['numeric'],
+            'selling_price' => ['numeric'],
             'product_brand'=>['string'],
             'product_name'=>['string'],
             'vehicle_name' =>['string']

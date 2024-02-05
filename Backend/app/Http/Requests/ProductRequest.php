@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
             'vehicle_name' => ['required', 'string'],
             'product_name' => ['required','string'],
             'product_brand'=>['required','string'],
-            'Quantity'=>['required','integer'],
+            'quantity'=>['required','integer'],
             'buying_price'=>['required','integer'],
             'selling_price'=>['required','integer'],
         ];

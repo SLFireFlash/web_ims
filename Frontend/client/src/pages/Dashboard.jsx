@@ -43,8 +43,8 @@ export default function Dashboard(){
             axiosClient.get('/productcount')
             .then(({data})=>{
                 setProductCount(data.productCount);
-                setmaxCount(data.maxValue);
-                setminCount(data.minValue);
+                setmaxCount(data.maxValue['quantity']);
+                setminCount(data.minValue['quantity']);
                 setvisible(false);
             })
             .catch(err=>{
@@ -56,10 +56,10 @@ export default function Dashboard(){
         <>
                 <div className="dashboard">
                     <div className="dashboard-welcome">
-                        <StatusBar visible={visible} Mdata={productCount} Tdata={'Total sales'} Mimg={totalsalesI} TImg={totalsales2I} />
-                        <StatusBar visible={visible} Mdata={maxCount} Tdata={'Total Products'} Mimg={inventoryI} TImg={inventory_2I} color={'#0dde94'}/>
-                        <StatusBar visible={visible} Mdata={minCount} Tdata={'Total Customers'} Mimg={phone3I} TImg={phone2I} color={'#ff7a8b'}/>
-                        <StatusBar visible={visible} Mdata={productCount} Tdata={'Total Suplyers'} Mimg={phoneI} TImg={vanI} color={'#05c4c9'} />
+                        <StatusBar visible={visible} Mdata={maxCount} Tdata={'Total sales'} Mimg={totalsalesI} TImg={totalsales2I} />
+                        <StatusBar visible={visible} Mdata={productCount} Tdata={'Total Products'} Mimg={inventoryI} TImg={inventory_2I} color={'#0dde94'}/>
+                        <StatusBar visible={visible} Mdata={productCount} Tdata={'Total Customers'} Mimg={phone3I} TImg={phone2I} color={'#ff7a8b'}/>
+                        <StatusBar visible={visible} Mdata={minCount} Tdata={'Total Suplyers'} Mimg={phoneI} TImg={vanI} color={'#05c4c9'} />
                     </div>
                     <div className="dashboard-status">
                         <DashboardChart />

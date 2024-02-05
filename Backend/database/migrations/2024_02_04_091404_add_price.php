@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::table('stock', function (Blueprint $table) {
+            $table->decimal('buying_price', 10, 2)->default(0.00);
+            $table->decimal('selling_price', 10, 2)->default(0.00);
+        });
     }
 
     /**
@@ -19,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('stock', function (Blueprint $table) {
+            //
+        });
     }
 };

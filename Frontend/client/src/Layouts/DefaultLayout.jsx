@@ -99,7 +99,7 @@ export default function DefaultLayout(){
                         </div>
                         <div className="me-2 d-flex">
                             <Link to='/'><img src={notificationsI} alt="notifications" className="me-2 w-100" /></Link>
-                            <h4 className="ms-2 me-2">{user.name}</h4>
+                            <h4 className="ms-2 me-2">{user.user_name}</h4>
                         </div>
                         
 
