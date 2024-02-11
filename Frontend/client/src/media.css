@@ -128,5 +128,29 @@
         margin-top: 1vh;
         margin-bottom: 1vh;
     }
-    
+    div .main-card-titles img{
+        display: none;
+    }
+    div .main-card-body img{
+        width: 2rem;
+    }
+    div .main-card-body{
+        flex-direction: column;
+    }
+    div .main-card-titles{
+        text-align: justify;
+        font-size: .7rem;
+        text-align: center;
+        padding: 0;
+    }
+    div .mainChart{
+        display: none;
+    }
+    div .dashboard-status{
+        flex-direction: column;
+    }
+    div .dashboard-buttons{
+       display: none;
+    }
+
   }

@@ -4,6 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import axiosClient from "../AxiosClient";
 import Swal from 'sweetalert2'
 import SideMenu from "../components/SideMenu";
+import {Button,Table,Modal,CloseButton } from 'react-bootstrap';
+
+import Cart from '../components/Cart';
+
 
 import dashboardI from '../assets/svg/dashboard.svg';
 import accountI from '../assets/svg/account.svg';
@@ -25,7 +29,12 @@ export default function DefaultLayout(){
     const PageRef = useRef(false);
     const[PageSt,setPageSt] =useState(false);
     const {setUser,setToken,token,user}= useStateContext();
+    
+    const[CartShow,setCartShow] =useState(false);
+    const handleCartClose = () => setCartShow(false);
+    const handleCartShow = () => setCartShow(true);
 
+    
     useEffect(()=>{
         axiosClient.get('/user')
         .then(({data})=>{
@@ -93,13 +102,18 @@ export default function DefaultLayout(){
                 <div className="default-content">
                     <div className="default-header">
                         
-                        <div className="d-flex">
+                        <div className="d-flex mb-3">
                             <SideMenu />
-                            <Link to='/' className="ms-5"><img src={homeI} alt="Home"className="ms-2 w-100" /></Link>
                         </div>
-                        <div className="me-2 d-flex">
-                            <Link to='/'><img src={notificationsI} alt="notifications" className="me-2 w-100" /></Link>
-                            <h4 className="ms-2 me-2">{user.user_name}</h4>
+                        <div>
+                        <h3>Welcome back {user.user_name}</h3>
+                        <div className="cart">
+                        {CartShow ? <Cart handleCartClose ={handleCartClose}/> : null}
+                        </div>
+                        </div>
+                        <div className="nav_icons">
+                            <button onClick={handleCartShow}><img src={invoiceI} alt="cart" className="me-2 w-100" /></button>
+                            {/* <Link to='/'><img src={accountI} alt="account" className="me-2 w-100" /></Link> */}
                         </div>
                         
 

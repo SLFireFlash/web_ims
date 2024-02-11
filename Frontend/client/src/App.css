@@ -218,14 +218,156 @@ div .default-content {
 div .testA{
     box-sizing: border-box;
 }
+div .nav_icons{
+    display: flex;
+    gap: 0.5rem;
+}
+div .nav_icons button{
+    background: none;
+    border: none;
+    padding: 0;
+}
 div .default-header{
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
     height: 8vh;
     background-color: #ffffff;
     box-shadow: 5px 5px 15px #b2b9d4;
     
+}
+/*cart */
+div .cart-outer{
+    width: 50vw;
+    height: 75vh;
+    display: flex;
+    justify-content: flex-start;
+    box-shadow: 5px 5px 15px #acaaaa;
+    border-radius: 0.5rem;
+}
+div .cart-left-side{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 60vw;
+    border-top-left-radius:.5rem ;
+    border-bottom-left-radius: .5rem;
+}
+div .cart-left-side h3{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+div .cart-title-div{
+    display: flex;
+    justify-content: space-around;
+    padding-top: .2rem;
+    color: black;
+    max-height: 15vh;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-bottom: 2px solid rgb(148, 135, 135);
+}
+div .tac{
+    display: flex;
+    flex-direction: row;
+}
+div .cart-right-side{
+    width: 40vw;
+    background-color: #cfbbbb;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-top-right-radius:0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+div .cart-right-side h3{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+div .closebutton {
+    display: flex;
+    justify-content: end;
+    margin-top: 4px;
+
+}
+div .Oder-Summary-info{
+    height:43vh;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+div .Summary-cart{
+    padding-left: .4rem;
+    padding-right: .8rem;
+    display: flex;
+    justify-content: space-between;
+}
+div .checkout-cart{
+    border-top: 2px solid rgb(148, 135, 135);
+    padding-top: .2rem;
+}
+div .checkout-btn-div{
+    display: flex;
+    justify-content: center;
+    
+}
+div .checkout-btn-div button{
+    width: 60%;
+}
+.checkout-btn:hover {
+    background-color: #348dec; /* Darker color on hover */
+  }
+div .oder-items-cart table td{
+    border: none;
+}
+div .oder-items-cart table th {
+    border: none;
+    opacity: .4;
+}
+.oder-items-cart table td input{
+    width: 3rem;
+    border: none;
+
+}
+div .ThreeDots-wrapper{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+div .oder-items-cart{
+
+    max-height: 60vh;
+    overflow: auto;
+}
+div .osi{
+    width:80px;
+    background-color: #a6ebd6;
+    border: none;
+    text-align: end;
+}
+div .osi:focus{
+    outline: none;
+}
+td input{
+    background-color: #a6ebd6;
+    text-align: center;
+}
+td input:focus{
+    outline: none;
+    
+}
+
+
+/* div .oder-items-cart td{
+    border: none;
+}
+div .oder-items-cart th{
+    border: none;
+} */
+#testcart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /*component status bar cards */
 div .main-dashboard-Card{
@@ -338,12 +480,12 @@ div .dashboard-status{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 100vw;
 
 }
 div .dashboard-buttons{
     display: flex;    
-    width: 100%;
+    width: 100;
     margin-top: 4vh;
     height: 20vh;
     background-color: #ffffff;

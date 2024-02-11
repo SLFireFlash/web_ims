@@ -57,6 +57,13 @@ export default function Invoice(){
                 serPerPage(response.data.SearchResult.per_page);
         } catch (error) {
             console.error('Error fetching products:', error);
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Failed! try Again",
+                showConfirmButton: false,
+                timer: 1000
+              });
         }
     };
     useEffect(() => {

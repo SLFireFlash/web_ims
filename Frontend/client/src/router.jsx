@@ -73,7 +73,7 @@ const router = createBrowserRouter([
                 element:<UpdateProduct />
             },
             {
-                path:'/Atest0',
+                path:'/test',
                 element:<TestA />
             }
         ]

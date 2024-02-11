@@ -56,9 +56,9 @@ export default function Dashboard(){
         <>
                 <div className="dashboard">
                     <div className="dashboard-welcome">
-                        <StatusBar visible={visible} Mdata={maxCount} Tdata={'Total sales'} Mimg={totalsalesI} TImg={totalsales2I} />
+                        <StatusBar visible={visible} Mdata={maxCount} Tdata={'Total Sales'} Mimg={totalsalesI} TImg={totalsales2I} />
                         <StatusBar visible={visible} Mdata={productCount} Tdata={'Total Products'} Mimg={inventoryI} TImg={inventory_2I} color={'#0dde94'}/>
-                        <StatusBar visible={visible} Mdata={productCount} Tdata={'Total Customers'} Mimg={phone3I} TImg={phone2I} color={'#ff7a8b'}/>
+                        <StatusBar visible={visible} Mdata={productCount} Tdata={'Total Buyers'} Mimg={phone3I} TImg={phone2I} color={'#ff7a8b'}/>
                         <StatusBar visible={visible} Mdata={minCount} Tdata={'Total Suplyers'} Mimg={phoneI} TImg={vanI} color={'#05c4c9'} />
                     </div>
                     <div className="dashboard-status">
@@ -71,14 +71,14 @@ export default function Dashboard(){
                     </div>
 
                     <div className="dashboard-buttons">
-                        <ButtonGroup  size="large" aria-label="large button group">
-                            <Link to={'/invoice'} ><Button key="one">New Bill</Button></Link>,
-                            <Link to={'/add_product'} ><Button key="two">New Product</Button></Link>,
-                            <Link to={'/products'}><Button key="three">All products</Button></Link>,
-                            <Link to={'/update_product'} ><Button key="one">Update Products</Button></Link>,
-                            <Link to={''} ><Button key="two">Remove Product</Button></Link>,
-                            <Link to={'/account'} ><Button key="three">Account Info</Button></Link>,
-                        </ButtonGroup>
+                    <ButtonGroup className="d-flex flex-wrap" size="large" aria-label="large button group">
+                        <Link to={'/invoice'} className="flex-grow-1"><Button>New Bill</Button></Link>
+                        <Link to={'/add_product'} className="flex-grow-1"><Button>New Product</Button></Link>
+                        <Link to={'/products'} className="flex-grow-1"><Button>All products</Button></Link>
+                        <Link to={'/update_product'} className="flex-grow-1"><Button>Update Products</Button></Link>
+                        <Link to={''} className="flex-grow-1"><Button>Remove Product</Button></Link>
+                        <Link to={'/account'} className="flex-grow-1"><Button>Account Info</Button></Link>
+                    </ButtonGroup>
 
                         {/* <div className="button-row">
                             <Link to={'/invoice'} > Create New Bill </Link>

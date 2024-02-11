@@ -31,6 +31,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/search', [ProductController::class, 'ProductSearch']);
     Route::post('/updateProduct', [ProductController::class, 'UpdateProduct']);
     Route::post('/AddToCart', [ProductController::class, 'AddToCart']);
+    Route::post('/removeProduct', [ProductController::class, 'RemoveProduct']);
+    Route::post('/loadcart',[ProductController::class,'LoadCart']);
 });
 
 
@@ -38,6 +40,5 @@ Route::middleware('auth:sanctum')->group(function(){
 
 Route::post('/signup', [AuthController::class, 'SingUp']);
 Route::post('/login', [AuthController::class, 'LogIn']);
-Route::post('/removeProduct', [ProductController::class, 'RemoveProduct']);
 
 
