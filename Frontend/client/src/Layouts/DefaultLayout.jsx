@@ -4,24 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import axiosClient from "../AxiosClient";
 import Swal from 'sweetalert2'
 import SideMenu from "../components/SideMenu";
-import {Button,Table,Modal,CloseButton } from 'react-bootstrap';
+
 
 import Cart from '../components/Cart';
-
-
-import dashboardI from '../assets/svg/dashboard.svg';
-import accountI from '../assets/svg/account.svg';
-import customersI from '../assets/svg/customers.svg';
-import logoutI from '../assets/svg/logout.svg';
 import invoiceI from '../assets/svg/invoice.svg';
-import productsI from '../assets/svg/products.svg';
-import suplyerI from '../assets/svg/suplyer.svg';
-import homeI from '../assets/svg/Home.svg';
-import notificationsI from '../assets/svg/notifications.svg';
-import contact_supportI from '../assets/svg/contact_support.svg';
-import analyticI from '../assets/svg/analytics.svg';
-
-
 
 
 
@@ -29,6 +15,7 @@ export default function DefaultLayout(){
     const PageRef = useRef(false);
     const[PageSt,setPageSt] =useState(false);
     const {setUser,setToken,token,user}= useStateContext();
+    const [username,Setusername] = useState();
     
     const[CartShow,setCartShow] =useState(false);
     const handleCartClose = () => setCartShow(false);
@@ -39,6 +26,8 @@ export default function DefaultLayout(){
         axiosClient.get('/user')
         .then(({data})=>{
             setUser(data)
+            Setusername(data['user_name']);
+            console.log(user);
         })
     },[])
     const Logout =()=>{
@@ -106,7 +95,7 @@ export default function DefaultLayout(){
                             <SideMenu />
                         </div>
                         <div>
-                        <h3>Welcome back {user.user_name}</h3>
+                        <h3>Welcome back {username}</h3>
                         <div className="cart">
                         {CartShow ? <Cart handleCartClose ={handleCartClose}/> : null}
                         </div>

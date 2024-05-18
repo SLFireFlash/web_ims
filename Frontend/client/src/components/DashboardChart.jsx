@@ -16,7 +16,6 @@ export default function DashboardChart(){
                 <div className="chartData">
                     <img src={chart} alt="chart" />
                 </div>
-                
             </div>
         </>
     )

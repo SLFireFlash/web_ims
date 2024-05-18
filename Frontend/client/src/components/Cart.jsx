@@ -1,19 +1,61 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { Button, Table, Modal, CloseButton } from "react-bootstrap";
 import axiosClient from "../AxiosClient";
 import { useStateContext } from "../context/ContextProvider";
 import { ThreeDots } from  'react-loader-spinner'
+import Swal from 'sweetalert2'
+import { useReactToPrint } from 'react-to-print';
+import ReactDOM from 'react-dom/client';
 
 export default function Cart({ handleCartClose }) {
   const [quantity, setQuantity] = useState(0);
   const { user } = useStateContext();
   const [CartProducts, setCartProdcuts] = useState([]);
   const [quantities, setQuantities] = useState({});
-  const [totSum,setTotsum] = useState(0);
   const [visible,setvisible] =useState(true);
+  const [fees,setFees] = useState(0);
+  const [discounts,setDiscounts] = useState(0)
+  const [subtotal,setSubtotal] =useState(0);
+  const [fulltot,setFulltot]=useState(0);
   let totalSum =0
 
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+   content: () => componentRef.current,
+   documentTitle: 'Visitor Pass',
+   onAfterPrint: () => console.log('Printed PDF successfully!'),
+  })
 
+
+  useEffect(()=>{
+    setFulltot(0);
+    const fs = parseInt(totalSum) + parseInt(fees) - parseInt(discounts);
+    setFulltot(fs); 
+  },[fees,discounts,quantities])
+
+  const checkout =()=>{
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes,Make order"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handlePrint()
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Bill exported!",
+        //   icon: "success"
+        // });
+      }
+    });
+    console.log(fees);
+    console.log(subtotal);
+  }
   const handleQuantityChange = (productId, quantity) => {
     setQuantities({ ...quantities, [productId]: quantity });
   };
@@ -44,8 +86,8 @@ export default function Cart({ handleCartClose }) {
 
   return (
     <>
-      <Modal show={show} onHide={handleCartClose}>
-        <div className="cart-outer">
+      <Modal show={show} onHide={handleCartClose} >
+        <div className="cart-outer" ref={componentRef}>
           <div className="cart-left-side">
             <div className="cart-title-div">
               <h3>Current Oder</h3>
@@ -85,7 +127,7 @@ export default function Cart({ handleCartClose }) {
                                 <input 
                                     type="number" 
                                     max={product.quantity} 
-                                    value={quantities[product.id] || '0'} 
+                                    value={quantities[product.id] || '1'} 
                                     onChange={(event) => handleQuantityChange(product.id, parseInt(event.target.value))} 
                                 />
                             </td>
@@ -113,19 +155,19 @@ export default function Cart({ handleCartClose }) {
               <div className="Summary-cart">
                 <p>Subtotal</p>
                 <p>
-                  <b><input type="number" className="osi"value={totalSum} />$</b>
+                  <b><input type="number" className="osi"value={totalSum} onChange={(ev)=>{setSubtotal(ev.target.value)}} />$</b>
                 </p>
               </div>
               <div className="Summary-cart">
                 <p>fees</p>
                 <p>
-                  <b><input type="number" className="osi" />$</b>
+                  <b><input type="number" className="osi" onChange={(ev)=>{setFees(ev.target.value)}} />$</b>
                 </p>
               </div>
               <div className="Summary-cart">
                 <p>Discounts</p>
                 <p>
-                  <b><input type="number" className="osi" />$</b>
+                  <b><input type="number" className="osi"onChange={(ev)=>{setDiscounts(ev.target.value)}} />$</b>
                 </p>
               </div>
               
@@ -134,11 +176,11 @@ export default function Cart({ handleCartClose }) {
               <div className="Summary-cart">
                 <p>Total</p>
                 <p>
-                  <b>1250$</b>
+                  <b>{fulltot}$</b>
                 </p>
               </div>
               <div className="checkout-btn-div">
-                <Button variant="primary">Checkout</Button>
+                <Button variant="primary" onClick={checkout}>Checkout</Button>
               </div>
             </div>
           </div>

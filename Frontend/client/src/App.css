@@ -351,6 +351,7 @@ div .osi:focus{
 td input{
     background-color: #a6ebd6;
     text-align: center;
+    border: none;
 }
 td input:focus{
     outline: none;
@@ -824,4 +825,46 @@ div .button-row-update a:hover{
 /*product page*/
 div .product-input input{
     width: 'fit-content';
+}
+/*printer*/
+div .invoice-wrapper{
+    padding: 1rem;
+}
+div .inhead{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+div .invoice-titile{
+    color: black;
+    font-weight: 600;
+    font-family: poppins;
+    font-size: 3rem;
+}
+div .invoice-time-date{
+    font-weight: 400;
+    font-family: poppins;
+    text-align: end;
+}
+div .outhead{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;   
+}
+div .billto{
+    text-align: end;
+}
+div .tt{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+div .invoice-prices{
+    text-align: end;
+}
+div .invoice-end{
+    position: absolute;
+    bottom: 0;
+    margin-left: 45vw;
+
 }
