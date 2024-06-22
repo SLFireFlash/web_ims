@@ -7,6 +7,9 @@ import Swal from 'sweetalert2'
 import { useReactToPrint } from 'react-to-print';
 import ReactDOM from 'react-dom/client';
 
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 export default function Cart({ handleCartClose }) {
   const [quantity, setQuantity] = useState(0);
   const { user } = useStateContext();
@@ -19,7 +22,7 @@ export default function Cart({ handleCartClose }) {
   const [fulltot,setFulltot]=useState(0);
   let totalSum =0
 
-  const root = ReactDOM.createRoot(document.getElementById('root'));
+  // const root = ReactDOM.createRoot(document.getElementById('root'));
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
    content: () => componentRef.current,
@@ -29,7 +32,7 @@ export default function Cart({ handleCartClose }) {
 
 
   useEffect(()=>{
-    setFulltot(0);
+    setFulltot();
     const fs = parseInt(totalSum) + parseInt(fees) - parseInt(discounts);
     setFulltot(fs); 
   },[fees,discounts,quantities])
@@ -53,12 +56,51 @@ export default function Cart({ handleCartClose }) {
         // });
       }
     });
-    console.log(fees);
-    console.log(subtotal);
+    // console.log(fees);
+    // console.log(subtotal);
   }
   const handleQuantityChange = (productId, quantity) => {
     setQuantities({ ...quantities, [productId]: quantity });
   };
+  const cartClear = ()=>{
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes,Clear Cart"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosClient.get('/clearcart')
+        .then((Response)=>{
+          if(Response.data.code == 201){
+            Swal.fire({
+              title: Response.data.message,
+              icon: "success"
+            });
+            handleCartClose();
+          }else{
+            Swal.fire({
+              title: 'something went wrong',
+              icon: "success"
+            });
+          }
+          console.log(Response.data);
+
+        })
+        .catch((err)=>{
+          console.log(err);
+          Swal.fire({
+            title: 'something went wrong',
+            icon: "success"
+          });
+        })
+      }
+    });
+
+  }
 
   useEffect(() => {
     const payload = {
@@ -71,11 +113,15 @@ export default function Cart({ handleCartClose }) {
         setvisible(false)
       })
       .catch((err) => {
+        Swal.fire({
+          title: "something went wrong while loading cart",
+          icon: "warning"
+        });
         console.log(err);
+        handleCartClose();
       });
   }, []);
 
-  //car model controll
   const [show, setShow] = useState(true);
 
   let a = quantity;
@@ -84,20 +130,49 @@ export default function Cart({ handleCartClose }) {
     setQuantity(a);
   };
 
+  const exportPDF = () => {
+    const input = document.getElementById('cart-outer');
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+  
+        // Get the dimensions of the canvas and the PDF
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+  
+        // Calculate the aspect ratio of the image
+        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+        const scaledWidth = imgWidth * ratio;
+        const scaledHeight = imgHeight * ratio;
+  
+        // Calculate the position to center the image in the PDF
+        const x = (pdfWidth - scaledWidth) / 2;
+        const y = (pdfHeight - scaledHeight) / 2;
+  
+        // Add the image to the PDF with the calculated positions and scaled dimensions
+        pdf.addImage(imgData, 'PNG', x, y, scaledWidth, scaledHeight);
+        pdf.save('invoice.pdf');
+      });
+  };
+  
+  
   return (
     <>
       <Modal show={show} onHide={handleCartClose} >
-        <div className="cart-outer" ref={componentRef}>
+        <div className="cart-outer"  id="cart-outer" ref={componentRef}>
           <div className="cart-left-side">
             <div className="cart-title-div">
-              <h3>Current Oder</h3>
+              <h3>INVOICE</h3>
             </div>
             <div className="oder-items-cart">
               <Table hover>
                 <thead>
                   <tr>
                     <th>Product</th>
-                    <th>Vehicle</th>
+                    <th className="no-dis-mb">Vehicle</th>
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Total</th>
@@ -116,21 +191,22 @@ export default function Cart({ handleCartClose }) {
                             />
                     
                 {CartProducts.map((product) => {
-                    const total = product.selling_price * (quantities[product.id] || 0);
+                    const total = product.selling_price * product.O_quantity;
                     totalSum += total; 
                     
                     return (
                         <tr key={product.stock_id}>
                             <td>{product.product_name}</td>
-                            <td>{product.vehicle_name}</td>
-                            <td>
+                            <td  className="no-dis-mb">{product.vehicle_name}</td>
+                            {/* <td>
                                 <input 
                                     type="number" 
                                     max={product.quantity} 
-                                    value={quantities[product.id] || '1'} 
+                                    value={product.O_quantity} 
                                     onChange={(event) => handleQuantityChange(product.id, parseInt(event.target.value))} 
                                 />
-                            </td>
+                            </td> */}
+                            <td>{product.O_quantity}</td>
                             <td>{product.selling_price}</td>
                             <td>{total}</td>
                         </tr>
@@ -141,21 +217,11 @@ export default function Cart({ handleCartClose }) {
             </div>
           </div>
           <div className="cart-right-side">
-            {/* <div className="closebutton">
-              
-            </div> */}
-            <div className="cart-title-div">
-                <h3>Oder Summary</h3>
-                <div className="tac">
-                    
-                    <CloseButton variant="black" onClick={handleCartClose}></CloseButton>
-                </div>
-            </div>
             <div className="Oder-Summary-info">
               <div className="Summary-cart">
                 <p>Subtotal</p>
                 <p>
-                  <b><input type="number" className="osi"value={totalSum} onChange={(ev)=>{setSubtotal(ev.target.value)}} />$</b>
+                  <b >{totalSum}$</b>
                 </p>
               </div>
               <div className="Summary-cart">
@@ -165,7 +231,7 @@ export default function Cart({ handleCartClose }) {
                 </p>
               </div>
               <div className="Summary-cart">
-                <p>Discounts</p>
+                <p>disc.</p>
                 <p>
                   <b><input type="number" className="osi"onChange={(ev)=>{setDiscounts(ev.target.value)}} />$</b>
                 </p>
@@ -176,14 +242,18 @@ export default function Cart({ handleCartClose }) {
               <div className="Summary-cart">
                 <p>Total</p>
                 <p>
-                  <b>{fulltot}$</b>
+                  <b>{fees === 0 && discounts === 0 ? totalSum : fulltot}$</b>
+                  
                 </p>
-              </div>
-              <div className="checkout-btn-div">
-                <Button variant="primary" onClick={checkout}>Checkout</Button>
+                
               </div>
             </div>
           </div>
+        </div>
+        <div className="checkout-btn-div">
+                <Button variant="secondary" onClick={handleCartClose}>Close Cart</Button>
+                <Button variant="warning" onClick={cartClear}>Clear All</Button>
+                <Button variant="primary" onClick={exportPDF}>Checkout</Button>
         </div>
       </Modal>
     </>

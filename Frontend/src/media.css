@@ -100,7 +100,7 @@
         text-align: center;
     }
     div .Search-product input::placeholder{
-        color: white;
+        color: rgb(20, 1, 1);
         font-size:small;
         text-align: center;
     }
@@ -144,13 +144,71 @@
         padding: 0;
     }
     div .mainChart{
-        display: none;
+        width: 90vw;
+    }
+    div .dashboardButton{
+        width: 90vw;
+        min-height:auto;
+
     }
     div .dashboard-status{
         flex-direction: column;
+        height: auto;
     }
     div .dashboard-buttons{
-       display: none;
+        display: none;
+
+    }
+    .btn-tit{
+        margin: 1rem;
+        margin-top: 2vh;
+        padding: 1rem;
+        box-shadow: 5px 5px 15px #b2b9d4;
+
+    }
+    .dash-btns{
+        display: flex;
+        flex-wrap: wrap;
+        gap: .4rem;
+    }
+    .dash-btn{
+        width: 96px;
+        height: 36px;
+        background-color:rgb(37, 150, 190);
+        border: 1px solid #76b5c5;
+        color: #ffffff;
+    }
+    .no-dis-mb{
+        display: none;
+    }
+    .cart-outer{
+        flex-wrap: wrap;
+        width: 90vw;
+    }
+    .cart-left-side{
+        width: 90vw;
+        min-height: 64dvh;
+    }
+    .cart-right-side{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90vw !important;
+    }
+    .cart-title-div{
+        width: 90vw;
+    }
+    .oder-items-cart{
+        width: 90vw;
+    }
+    .cart-t-d-2{
+        display: none !important;
+    }
+    .Oder-Summary-info{
+        margin-top: 1rem;
+        min-height:5vh;
+        display: flex;
+        flex-direction: column;
     }
 
   }

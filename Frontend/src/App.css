@@ -157,7 +157,6 @@ div .new-user a{
 div .defult-layout{
     display: flex;
     flex-direction: row;
-    min-width:100%;
     min-height: 100vh;
 }
 
@@ -212,7 +211,10 @@ div .other-buttons a{
     color: #d26675;
 }
 div .default-content {
-    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 99vw;
     background-color: #f4f5fa;
 }
 div .testA{
@@ -230,6 +232,8 @@ div .nav_icons button{
 div .default-header{
     display: flex;
     justify-content:space-between;
+    padding-left: 4px;
+    padding-right: 4px;
     align-items: center;
     height: 8vh;
     background-color: #ffffff;
@@ -238,17 +242,12 @@ div .default-header{
 }
 /*cart */
 div .cart-outer{
-    width: 50vw;
-    height: 75vh;
     display: flex;
-    justify-content: flex-start;
-    box-shadow: 5px 5px 15px #acaaaa;
-    border-radius: 0.5rem;
+    flex-direction: column;
 }
 div .cart-left-side{
     padding-left: 1rem;
     padding-right: 1rem;
-    width: 60vw;
     border-top-left-radius:.5rem ;
     border-bottom-left-radius: .5rem;
 }
@@ -259,10 +258,7 @@ div .cart-left-side h3{
 div .cart-title-div{
     display: flex;
     justify-content: space-around;
-    padding-top: .2rem;
     color: black;
-    max-height: 15vh;
-    font-weight: 600;
     font-size: 1.6rem;
     border-bottom: 2px solid rgb(148, 135, 135);
 }
@@ -271,12 +267,14 @@ div .tac{
     flex-direction: row;
 }
 div .cart-right-side{
-    width: 40vw;
-    background-color: #cfbbbb;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-bottom: 1rem;
     border-top-right-radius:0.5rem;
     border-bottom-right-radius: 0.5rem;
+}
+.Summary-cart input{
+    background-color: wheat;
 }
 div .cart-right-side h3{
     margin-top: 1rem;
@@ -290,7 +288,6 @@ div .closebutton {
 
 }
 div .Oder-Summary-info{
-    height:43vh;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -307,22 +304,21 @@ div .checkout-cart{
 }
 div .checkout-btn-div{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     
 }
 div .checkout-btn-div button{
-    width: 60%;
+    width: 30%;
+    margin-bottom:1rem;
 }
 .checkout-btn:hover {
     background-color: #348dec; /* Darker color on hover */
   }
 div .oder-items-cart table td{
     border: none;
+    
 }
-div .oder-items-cart table th {
-    border: none;
-    opacity: .4;
-}
+
 .oder-items-cart table td input{
     width: 3rem;
     border: none;
@@ -335,28 +331,20 @@ div .ThreeDots-wrapper{
     align-items: center;
 }
 div .oder-items-cart{
-
     max-height: 60vh;
     overflow: auto;
 }
 div .osi{
     width:80px;
-    background-color: #a6ebd6;
     border: none;
     text-align: end;
+    border-radius: .2rem;
+    margin-right: .2rem;
 }
 div .osi:focus{
     outline: none;
 }
-td input{
-    background-color: #a6ebd6;
-    text-align: center;
-    border: none;
-}
-td input:focus{
-    outline: none;
-    
-}
+
 
 
 /* div .oder-items-cart td{
@@ -405,7 +393,7 @@ div .main-card-titles img{
 /*dashboard charts*/
 div .mainChart{
     height: 45vh;
-    width: 65%;
+    width: 65vw;
     margin-top: 2vh;
     box-shadow: 5px 5px 15px #b2b9d4;
 }
@@ -426,7 +414,7 @@ div .dashboardButton{
     display: flex;
     flex-direction: column;
     min-height: 45vh;
-    width: 30%;
+    width: 30vw;
     margin-top: 2vh;
     box-shadow: 5px 5px 15px #b2b9d4;
 }
@@ -463,39 +451,33 @@ div .chartData img{
 div .dashboard{
     display: flex;
     flex-direction: column;
-    min-height: 90vh;
-    align-items: center;
-    padding-top: 2vh;
-    padding-left: .5rem;
-    padding-right: 0.5rem;
+    align-items: center;    
+    min-height: 100dvh;
 }
 div .dashboard-welcome{
     display:flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 20vh;
+    justify-content: space-evenly;
+    height: 20dvh;
+    width: 98vw;
+    margin-top: 2dvh;
+
 }
 div .dashboard-status{
     height: 45vh;
+    width: 96vw;
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 100vw;
-
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2dvh;
 }
 div .dashboard-buttons{
     display: flex;    
-    width: 100;
-    margin-top: 4vh;
-    height: 20vh;
-    background-color: #ffffff;
-    padding: 1rem;
-    justify-content:center;
-    align-items: center;
-    box-shadow: 5px 5px 15px #b2b9d4;
+    margin-top: 4dvh;
+    height: 20dvh;
 }
-
 
 
 /* card comp*/
@@ -585,10 +567,17 @@ div .dashboard-loading{
 
 /*product page */
 
-div .product-table{
-    width: 100%;
+div .product-table Table{
+    min-height: 90dvh;
 }
-
+.loader-cls{
+    min-height: 100dvh;
+    min-width: 100dvh;
+}
+.paginate-prod{
+    display: flex;
+    justify-content: center;
+}
 /* account page */
 
 div .user-profile{
@@ -596,7 +585,6 @@ div .user-profile{
     flex-direction: row;
     width: 100%;
     height: 48vh;
-    background-color: #D9D9D9;
     margin-top: .2rem;
 }
 div .profile-logo{
@@ -604,8 +592,6 @@ div .profile-logo{
     width: 40%;
     justify-content: center;
     align-items: center;
-    background-color: #ccb4b4;
-    box-shadow: 5px 5px 15px #9c8c8c;
     border-radius: .5rem;
 }
 div .user-info{
@@ -613,7 +599,6 @@ div .user-info{
     width: 55%;
     justify-content: center;
     align-items: center;
-    background-color: #ccb4b4;
     box-shadow: 5px 5px 15px #9c8c8c;
     border-radius: .5rem;
     flex-direction: column;
@@ -624,7 +609,7 @@ div .user-title{
     justify-content: center;
     align-items: center;
     height: 15vh;
-    width: 70%;
+    width: 96%;
     background-color: #446285;
     box-shadow: 5px 5px 15px #9c8c8c;
     border-radius: .5rem;
@@ -640,7 +625,7 @@ div .user-data{
     margin-top: 2vh;
     margin-bottom: 1vh;
     height: 25vh;
-    width: 70%;
+    width: 96%;
     background-color: #2E344C;
     color: white;
     background-color: #446285;
@@ -671,11 +656,11 @@ div .btns-for-profile a{
     border-radius: 1rem;
     font-size: 2rem;
     font-weight: 600;
-    color: aqua;
-    background-color: #5459e7;
-    box-shadow: 5px 5px 15px #e74c4c;
+    color: #000000;
+    padding: .2rem;
+    box-shadow: 5px 5px 15px #ecd2d2;
     transition: ease .5s;
-    margin-left: 2rem;
+    margin-left: 700px;
     margin-right: 2rem;
     margin-bottom: 1rem;
     text-align: center;
@@ -737,7 +722,7 @@ div .invoice{
 div .Search-product{
     width: 100%;
     height: 10vh;
-    background-color:#cc5f5f;
+    background-color:#abdbe3;
     display:flex;
     flex-direction: row;
     align-items: center;
@@ -746,6 +731,7 @@ div .Search-product{
 div .search-info input{
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    color: #000000;
 }
 div .Search-product input{
     height: 30px;
@@ -756,21 +742,20 @@ div .Search-product input{
     
 }
 div .Search-product input::placeholder{
-    color: white;
+    color: #000000;
     font-size: 1.2rem;
     text-align: center;
 }
 
 div .Search-product input:focus{
     outline: none;
-    color: rgb(215, 233, 231);
+    color: rgb(0, 0, 0);
     
 }
 
 div .bill-table{
     align-items: center;
     height: 72vh;
-    background-color: #2E344C;
     overflow-y: scroll;
 }
 div .bill-btns{
@@ -779,7 +764,6 @@ div .bill-btns{
     align-items: center;
     justify-content: center;
     height: 10vh;
-    background-color:#34145f ;
 }
 
 /*add new product*/
@@ -867,4 +851,19 @@ div .invoice-end{
     bottom: 0;
     margin-left: 45vw;
 
+}
+.btn-tit{
+    display: none;
+}
+.Customer-table{
+    height: 100dvh;
+}
+.Customer-table table{
+    min-height: 90dvh;
+}
+.suplyer-table{
+    height: 100dvh;
+}
+.suplyer-table table{
+    min-height: 90dvh;
 }

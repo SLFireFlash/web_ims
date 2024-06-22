@@ -46,7 +46,9 @@ export default function SideMenu(){
         <Menu>
             <div className="main-buttons ms-2">
                 <Link to={'/dashboard'}> <img src={dashboardI} alt="dashboard" className="me-2" />Dashboard</Link>
-                <Link to={'/products'}> <img src={productsI}className="me-2" alt="Products" />Products</Link>
+                <Link to={'/invoice'}> <img src={analyticI} alt="NewBill" className="me-2" />New Bill</Link>
+                <Link to={'/add_product'}> <img src={customersI} alt="NewProduct" className="me-2" />Add Product</Link>
+                <Link to={'/products'}> <img src={productsI}className="me-2" alt="Products" />All Products</Link>
                 <Link to={'/invoice'}> <img src={invoiceI}className="me-2" alt="Invoice" />Invoice</Link>
                 <Link to={'/customers'}> <img src={customersI}className="me-2" alt="Customers" />Customers</Link>
                 <Link to={'/suplyers'}> <img src={suplyerI}className="me-2" alt="Suplyer" />Suplyer</Link>

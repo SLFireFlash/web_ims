@@ -20,7 +20,6 @@ export default function Invoice(){
     const [page,setPage] = useState(1) ; 
     //get user info
     const {user}= useStateContext();
-    console.log(user);
     //model show hide
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -88,9 +87,9 @@ export default function Invoice(){
     const searchData =()=>{
         setPage(1)
         fetchData()
-        console.log('Product Name: '+ ProductName);
-        console.log('Vehicle Name: '+VehicleName);
-        console.log('Brand: '+Brand);
+        // console.log('Product Name: '+ ProductName);
+        // console.log('Vehicle Name: '+VehicleName);
+        // console.log('Brand: '+Brand);
     }
     const addToCart = ()=>{
         const payload ={
@@ -126,7 +125,14 @@ export default function Invoice(){
             console.log(err); 
             handleClose();
         })
-}
+    }
+    const handleQuantityChange = (ev) => {
+        const maxQuantity = 100;
+        const value = parseInt(ev.target.value, 10);
+        if (value <= maxQuantity) {
+            setQuantity(value);
+        }
+    };
     return(
         <div className="invoice">
             <div className="Search-product">
@@ -146,9 +152,9 @@ export default function Invoice(){
                         <th>Id</th>
                         <th>vehicle name</th>
                         <th>product name</th>
-                        <th>product brand</th>
-                        <th>Quantity</th>
-                        <th>buy Price</th>
+                        <th className='no-dis-mb'>product brand</th>
+                        <th className='no-dis-mb'>Quantity</th>
+                        <th className='no-dis-mb'>buy Price</th>
                         <th>Sell Price</th>
                         <th>Add To Cart</th>
                     </tr>
@@ -159,9 +165,9 @@ export default function Invoice(){
                         <td>{product.id}</td>
                         <td>{product.vehicle_name}</td>
                         <td>{product.product_name}</td>
-                        <td>{product.brand_name}</td>
-                        <td>{product.quantity}</td>
-                        <td>{product.buying_price}</td>
+                        <td className='no-dis-mb'>{product.brand_name}</td>
+                        <td className='no-dis-mb'>{product.quantity}</td>
+                        <td className='no-dis-mb'>{product.buying_price}</td>
                         <td>{product.selling_price}</td>
                         <td><Button type='button' variant="outline-primary" onClick={() => loadProductData(product)} className='w-100 btn-sm'>add to cart</Button></td>
                         </tr>
@@ -173,18 +179,18 @@ export default function Invoice(){
             </div>
 
             <div className="bill-btns">
-            {/* pagination stat */}
-              <PaginationControl
-                page={page}
-                between={6}
-                total={allproducts}
-                limit={perPage}
-                changePage={(page) => {
-                setPage(page)
-                }}
-                ellipsis={1}
-            />
-            {/* pagination end */}
+                {/* pagination stat */}
+                <PaginationControl
+                    page={page}
+                    between={6}
+                    total={allproducts}
+                    limit={perPage}
+                    changePage={(page) => {
+                    setPage(page)
+                    }}
+                    ellipsis={1}
+                />
+                {/* pagination end */}
             </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -210,7 +216,7 @@ export default function Invoice(){
                     </Form.Group> */}
                     <Form.Group className="mb-3">
                         <Form.Label>Quantity</Form.Label>
-                        <Form.Control type="number" onChange={ev=>setQuantity(ev.target.value)} value={Quantity} placeholder="Quantity" autoFocus/>
+                        <Form.Control type="number" onChange={ev=>setQuantity(ev.target.value)} value={Quantity} max={100} placeholder="Quantity" autoFocus/>
                     </Form.Group>
                     {/* <Form.Group className="mb-3">
                         <Form.Label>buy price</Form.Label>

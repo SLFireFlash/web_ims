@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/newproduct', [ProductController::class, 'AddProduct']);
     Route::get('/productcount', [ProductController::class, 'productCount']);
     Route::get('/allproducts', [ProductController::class, 'productLoad']);
+    Route::get('/clearcart', [ProductController::class, 'ClearCart']);
     Route::post('/search', [ProductController::class, 'ProductSearch']);
     Route::post('/updateProduct', [ProductController::class, 'UpdateProduct']);
     Route::post('/AddToCart', [ProductController::class, 'AddToCart']);

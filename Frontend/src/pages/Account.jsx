@@ -63,9 +63,9 @@ export default function Account(){
             </div>
   
         <div className="btns-for-profile m-2">
-            <Link to={'/updateAccount'} > Update Info </Link>
+            {/* <Link to={'/updateAccount'} > Update Info </Link> */}
             <Link onClick={Logout} to={'/login'} >Logout</Link>
-            <Link  to={'/all_products'}>Remove Account</Link>
+            {/* <Link  to={'/all_products'}>Remove Account</Link> */}
         </div>
         
         </>

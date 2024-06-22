@@ -67,18 +67,32 @@ export default function Dashboard(){
                         {/* <StatusCard CardName='Number of products' visible={visible} content={productCount} />
                         <StatusCard CardName='Lowest Stock products' visible={visible} content={minCount}/>
                         <StatusCard CardName='highest Stock products' visible={visible}  content={maxCount}/> */}
-
                     </div>
 
+                    <div className="btn-tit">
+                        <p>Modify Products</p>
+
+                        <div className="dash-btns">
+                            <Link to={'/invoice'}><button className="dash-btn">New Bill</button></Link>
+                            <Link to={'/add_product'}><button className="dash-btn">New Product</button></Link>
+                            <Link to={'/products'}><button className="dash-btn">All Products</button></Link>
+                            {/* <Link to={'/update_product'}><button className="dash-btn">Update </button></Link> */}
+                            {/* <Link to={'/'}><button className="dash-btn">Remove </button></Link> */}
+                            {/* <Link to={'/account'}><button className="dash-btn">Account</button></Link> */}
+                        </div>
+                    </div>
+
+
+
                     <div className="dashboard-buttons">
-                    <ButtonGroup className="d-flex flex-wrap" size="large" aria-label="large button group">
-                        <Link to={'/invoice'} className="flex-grow-1"><Button>New Bill</Button></Link>
-                        <Link to={'/add_product'} className="flex-grow-1"><Button>New Product</Button></Link>
-                        <Link to={'/products'} className="flex-grow-1"><Button>All products</Button></Link>
-                        <Link to={'/update_product'} className="flex-grow-1"><Button>Update Products</Button></Link>
-                        <Link to={''} className="flex-grow-1"><Button>Remove Product</Button></Link>
-                        <Link to={'/account'} className="flex-grow-1"><Button>Account Info</Button></Link>
-                    </ButtonGroup>
+                        <ButtonGroup className="buttonGrp1" size="large" aria-label="large button group">
+                            <Link to={'/invoice'} className="flex-grow-1"><Button>New Bill</Button></Link>
+                            <Link to={'/add_product'} className="flex-grow-1"><Button>New product</Button></Link>
+                            <Link to={'/products'} className="flex-grow-1"><Button>All products</Button></Link>
+                            {/* <Link to={'/update_product'} className="flex-grow-1"><Button>Update Products</Button></Link>
+                            <Link to={''} className="flex-grow-1"><Button>Remove Product</Button></Link>
+                            <Link to={'/account'} className="flex-grow-1"><Button>Account Info</Button></Link> */}
+                        </ButtonGroup>
 
                         {/* <div className="button-row">
                             <Link to={'/invoice'} > Create New Bill </Link>

@@ -27,7 +27,7 @@ export default function DefaultLayout(){
         .then(({data})=>{
             setUser(data)
             Setusername(data['user_name']);
-            console.log(user);
+            // console.log(user);
         })
     },[])
     const Logout =()=>{
@@ -69,9 +69,10 @@ export default function DefaultLayout(){
         return(
             
             <>
-            <div className="defult-layout ">
+            <div className="defult-layout">
                
-                {/* <aside>
+                {/* 
+                <aside>
                     <div className="main-buttons ms-2">
                         <img src={analyticI} alt="side hero" />
                         <Link to={'/dashboard'}> <img src={dashboardI} alt="dashboard" className="me-2" />Dashboard</Link>

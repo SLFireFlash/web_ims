@@ -248,10 +248,10 @@ class ProductController extends Controller
                                 ->on('stocks.vehicle_id', '=', 'oders.vehicle_id')
                                 ->on('stocks.brand_id', '=', 'oders.brand_id');
                         })
-                        ->select('products.product_name as product_name', 'vehicles.vehicle_name as vehicle_name', 'stocks.quantity', 'stocks.selling_price','oders.id')
+                        ->select('products.product_name as product_name', 'vehicles.vehicle_name as vehicle_name', 'oders.quantity as O_quantity','stocks.quantity' ,'stocks.selling_price')
                         ->where('user_id',$user_id)
                         ->get();
-
+        
         if($orders){
             return response(
                 [
@@ -267,5 +267,14 @@ class ProductController extends Controller
                 );
         }
 
+   }
+   public function ClearCart (){
+        $ClearRes = Oder::truncate();
+            
+        return response()->json([
+            'success' => true,
+            'code' =>201,
+            'message' => 'Cart cleared successfully!',
+        ]);
    }
 }

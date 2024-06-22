@@ -121,18 +121,19 @@ const loadProductData =(product,type)=>{
     }
     return(
         <div className="product-table">
+
             <Table striped responsive>
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>vehicle name</th>
                     <th>product name</th>
-                    <th>product brand</th>
+                    <th className='no-dis-mb'>product brand</th>
                     <th>Quantity</th>
-                    <th>buy Price</th>
-                    <th>Sell Price</th>
+                    <th className='no-dis-mb'>buy Price</th>
+                    <th className='no-dis-mb'>Sell Price</th>
                     <th>Update</th>
-                    <th>Remove</th>
+                    <th className='no-dis-mb'>Remove</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -140,40 +141,46 @@ const loadProductData =(product,type)=>{
                     <tr key={product.stock_id}>
                     <td>{product.stock_id}</td>
                     <td>{product.vehicle_name}</td>
-                    <td>{product.product_name}</td>
-                    <td>{product.brand_name}</td>
+                    <td >{product.product_name}</td>
+                    <td className='no-dis-mb'>{product.brand_name}</td>
                     <td>{product.quantity}</td>
-                    <td>{product.buying_price}</td>
-                    <td>{product.selling_price}</td>
+                    <td className='no-dis-mb'>{product.buying_price}</td>
+                    <td className='no-dis-mb'>{product.selling_price}</td>
                     <td><Button type='button' variant="outline-warning" onClick={() => loadProductData(product)}  className='w-100'>Edit</Button></td>
-                    <td><Button variant="outline-danger" onClick={() => RemoveProduct(product)}  className='w-100'>Remove</Button></td>
+                    <td className='no-dis-mb'><Button variant="outline-danger" onClick={() => RemoveProduct(product)}  className='w-100'>Remove</Button></td>
                     </tr>
                 ))}                  
             </tbody>
-            </Table>
-            {/* loader start */}
             <ThreeDots 
-              height="80" 
-              width="80" 
-              radius="9"
-              color="#2929a6" 
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClassName=""
-              visible={Loader}
+                height="80" 
+                width="80" 
+                radius="9"
+                color="#2929a6" 
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={Loader}
               />
-              {/* lodaer end */}
+            </Table>
+            {/* loader start
+              <div className="loader-cls">
+
+              </div>
+              lodaer end */}
             {/* pagination stat */}
+            <div className="paginate-prod">
               <PaginationControl
-                page={page}
-                between={6}
-                total={allproducts}
-                limit={perPage}
-                changePage={(page) => {
-                setPage(page)
-                }}
-                ellipsis={1}
-            />
+                  page={page}
+                  between={6}
+                  total={allproducts}
+                  limit={perPage}
+                  changePage={(page) => {
+                  setPage(page)
+                  }}
+                  ellipsis={1}
+              />
+            </div>
+
             {/* pagination end */}
 
  

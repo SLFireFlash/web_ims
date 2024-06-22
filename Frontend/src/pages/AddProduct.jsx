@@ -77,7 +77,7 @@ export default function AddProduct(){
                         <button type="button" onClick={NewProduct}  className="btn btn-primary">Add Product</button>
                     </div>
                     <div className="d-grid">
-                       <p>Update Exsisting product ? <Link to={'/update_product'}>Update Product</Link></p>
+                       <p>Update Exsisting product ? <Link to={'/products'}>Update Product</Link></p>
                     </div>
                 </form>
                 
